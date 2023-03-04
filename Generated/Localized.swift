@@ -1,0 +1,73 @@
+// Source: https://github.com/SwiftGen/SwiftGen/issues/685#issuecomment-782893242
+// Adjusted to better fit needs
+// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
+
+import SwiftUI
+
+// MARK: - Strings
+
+public enum Localized {
+  /// Prompt
+  public static let prompt = LocalizedString(lookupKey: "prompt")
+  public enum BasicPrompt {
+    /// Each prompt will be sent alone, the AI will not remember any previous prompts.
+    public static let description = LocalizedString(lookupKey: "basic-prompt.description")
+    /// What do do you want to ask GPT?
+    public static let headline = LocalizedString(lookupKey: "basic-prompt.headline")
+    /// Basic Prompt
+    public static let title = LocalizedString(lookupKey: "basic-prompt.title")
+    public enum SubmitButton {
+      /// Submit Prompt
+      public static let title = LocalizedString(lookupKey: "basic-prompt.submit-button.title")
+    }
+  }
+  public enum CodeWriter {
+    /// Generate code through natural language prompts.
+    public static let description = LocalizedString(lookupKey: "code-writer.description")
+    /// Code Writer
+    public static let title = LocalizedString(lookupKey: "code-writer.title")
+    public enum EmptyList {
+      /// Enter a prompt to generate the first code snippet.\nAfterwards, you can improve the code by entering more prompts.
+      public static let title = LocalizedString(lookupKey: "code-writer.empty-list.title")
+    }
+    public enum SubmitButton {
+      /// Submit Prompt
+      public static let title = LocalizedString(lookupKey: "code-writer.submit-button.title")
+    }
+  }
+}
+
+// MARK: - Implementation Details
+
+extension Localized {
+  fileprivate static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
+    return String(format: format, locale: Locale.current, arguments: args)
+  }
+}
+
+public struct LocalizedString {
+    private let lookupKey: String
+
+    init(lookupKey: String) {
+        self.lookupKey = lookupKey
+    }
+
+    var key: LocalizedStringKey {
+        LocalizedStringKey(lookupKey)
+    }
+
+    var string: String {
+        Localized.tr("Localizable", lookupKey)
+    }
+}
+
+private final class BundleToken {
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+      return Bundle.module
+    #else
+      return Bundle(for: BundleToken.self)
+    #endif
+  }()
+}

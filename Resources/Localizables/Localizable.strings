@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  GPTPlayground
+
+  Created by Dennis Müller on 04.03.23.
+  
+*/
+
+// MARK: - Basic
+"prompt" = "Prompt";
+
+
+// MARK: - Basic Prompt
+"basic-prompt.title" = "Basic Prompt";
+"basic-prompt.headline" = "What do do you want to ask GPT?";
+"basic-prompt.description" = "Each prompt will be sent alone, the AI will not remember any previous prompts.";
+"basic-prompt.submit-button.title" = "Submit Prompt";
+
+// MARK: - Code Write
+"code-writer.title" = "Code Writer";
+"code-writer.description" = "Generate code through natural language prompts.";
+"code-writer.empty-list.title" = "Enter a prompt to generate the first code snippet.\nAfterwards, you can improve the code by entering more prompts.";
+"code-writer.submit-button.title" = "Submit Prompt";
+
