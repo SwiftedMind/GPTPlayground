@@ -25,13 +25,14 @@ import SwiftUI
 import IdentifiedCollections
 
 struct CodeWriter: Coordinator {
+    @Environment(\.colorScheme) private var colorScheme
 
     let interface: Interface<Action>
+    let providerInterface: Interface<ProviderAction>
 
     @State private var prompt: String = ""
-    @State private var selectedLanguage: ProgrammingLanguage = .swift
-    var onSubmit: @MainActor (_ prompt: String) -> Void
-    var code: AttributedString = ""
+    @State private var attributedCode: AttributedString = ""
+    var code: String = ""
     var isLoading: Bool = false
 
     var entryView: some View {
@@ -39,13 +40,16 @@ struct CodeWriter: Coordinator {
             interface: .handled(by: handleViewInterface),
             state: .init(
                 prompt: prompt,
-                code: code,
-                isLoading: isLoading,
-                selectedLanguage: selectedLanguage
+                code: attributedCode,
+                isLoading: isLoading
             )
         )
+        .onChange(of: code) { newValue in
+            attributedCode = newValue.highlightAsCode(colorScheme: colorScheme) ?? ""
+        }
         .navigationTitle(Localized.CodeWriter.title.string)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar { toolbarContent }
     }
 
     // MARK: - Interface Handler
@@ -55,11 +59,34 @@ struct CodeWriter: Coordinator {
         switch action {
         case .didChangePrompt(let newValue):
             prompt = newValue
-        case .didChangeSelectedLanguage(let newValue):
-            selectedLanguage = newValue
         case .didTapSubmit:
-            onSubmit(prompt)
+            providerInterface.sendAction(.commit(prompt: prompt))
             prompt = ""
+        }
+    }
+
+    // MARK: - Toolbar
+
+    @ToolbarContentBuilder @MainActor
+    private var toolbarContent: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+                UIPasteboard.general.string = code
+            } label: {
+                Image(systemName: "doc.on.doc")
+            }
+        }
+        ToolbarItemGroup(placement: .primaryAction) {
+            Button {
+                providerInterface.sendAction(.undo)
+            } label: {
+                Image(systemName: "arrow.uturn.backward.circle")
+            }
+            Button {
+                providerInterface.sendAction(.reset)
+            } label: {
+                Image(systemName: "xmark.circle")
+            }
         }
     }
 }
@@ -67,5 +94,10 @@ struct CodeWriter: Coordinator {
 extension CodeWriter {
     enum Action: Hashable {
         case noAction
+    }
+    enum ProviderAction: Hashable {
+        case commit(prompt: String)
+        case undo
+        case reset
     }
 }

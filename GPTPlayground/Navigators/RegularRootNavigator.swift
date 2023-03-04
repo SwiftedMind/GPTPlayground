@@ -58,16 +58,7 @@ struct RegularRootNavigator: Navigator {
                 )
             }
         case .codeWriter:
-            WithProvider(CodeWriterAnswerProvider.self) { provider in
-                CodeWriter(
-                    interface: .handled(by: handleCodeWriterInterface),
-                    onSubmit: { prompt in
-                        provider.commit(prompt, language: "Swift")
-                    },
-                    code: provider.generatedCode,
-                    isLoading: provider.isLoading
-                )
-            }
+            CodeWriterAnswerProvider(interface: .handled(by: handleCodeWriterInterface))
         }
     }
     

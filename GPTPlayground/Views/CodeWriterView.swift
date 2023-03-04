@@ -32,33 +32,27 @@ struct CodeWriterView: View {
     var body: some View {
         ScrollView {
             VStack {
-                promptView
                 codeView
             }
         }
         .scrollDismissesKeyboard(.interactively)
+        .safeAreaInset(edge: .bottom) {
+            promptView
+        }
     }
 
     @ViewBuilder @MainActor
     private var promptView: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading) {
-                LabeledContent("Language") {
-                    Picker(
-                        "Language",
-                        selection: interface.binding(state.selectedLanguage, to: { .didChangeSelectedLanguage($0) })
-                    ) {
-                        ForEach(ProgrammingLanguage.allCases) { language in
-                            Text(language.rawValue)
-                                .tag(language)
-                        }
-                    }
-                }
                 TextField(
                     Localized.prompt.string,
-                    text: interface.binding(state.prompt, to: { .didChangePrompt($0) }),
-                    axis: .vertical
+                    text: interface.binding(state.prompt, to: { .didChangePrompt($0) })
                 )
+                .onSubmit {
+                    isFocusingPrompt = true
+                    interface.sendAction(.didTapSubmit)
+                }
                 .focused($isFocusingPrompt)
                 .frame(maxWidth: .infinity)
             }
@@ -73,7 +67,6 @@ struct CodeWriterView: View {
                     .padding(.vertical, 10)
                     .frame(maxWidth: .infinity)
                     .background(state.prompt.isEmpty ? Color.gray : Color.App.accent)
-                    .opacity(state.prompt.isEmpty ? 0.5 : 1)
                     .foregroundColor(Color.App.primaryTextOnAccent)
             }
             .disabled(state.prompt.isEmpty)
@@ -124,28 +117,24 @@ extension CodeWriterView {
         var prompt: String
         var isLoading: Bool
         var code: AttributedString
-        var selectedLanguage: ProgrammingLanguage
 
         init(
             prompt: String = "",
             code: AttributedString = "",
-            isLoading: Bool = false,
-            selectedLanguage: ProgrammingLanguage = .swift
+            isLoading: Bool = false
         ) {
             self.prompt = prompt
             self.code = code
             self.isLoading = isLoading
-            self.selectedLanguage = selectedLanguage
         }
 
         static var mock: Self {
-            .init(code: try! "let a: String = \"Hello, World\"".highlightAsCode(colorScheme: .dark))
+            .init(code: "let a: String = \"Hello, World\"".highlightAsCode(colorScheme: .dark)!)
         }
     }
 
     enum Action {
         case didChangePrompt(String)
-        case didChangeSelectedLanguage(ProgrammingLanguage)
         case didTapSubmit
     }
 }
@@ -157,8 +146,6 @@ struct CodeWriter_Previews: PreviewProvider {
                 switch action {
                 case let .didChangePrompt(newValue):
                     state.prompt = newValue
-                case let .didChangeSelectedLanguage(newValue):
-                    state.selectedLanguage = newValue
                 default:
                     break
                 }
@@ -166,14 +153,10 @@ struct CodeWriter_Previews: PreviewProvider {
             .onStart { $state in
                 state.code = ""
             }
-            .overlay(overlayContent: { $state in
-//                DebugButton("Toggle Loading") {
-//                    state.isLoading.toggle()
-//                }
-            })
             .navigationTitle("Code Writer")
             .navigationBarTitleDisplayMode(.inline)
         }
         .preferredColorScheme(.dark)
+//        .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
     }
 }

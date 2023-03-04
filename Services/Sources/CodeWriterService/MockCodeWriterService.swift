@@ -24,7 +24,7 @@ import SwiftUI
 
 public class MockCodeWriterService: CodeWriterService {
 
-    public func send(_ prompt: String, language: String, currentCode: String?) async throws -> String {
+    public func send(_ prompt: String, currentCode: String?) async throws -> String {
         try await Task.sleep(for: .seconds(2))
         return code
     }

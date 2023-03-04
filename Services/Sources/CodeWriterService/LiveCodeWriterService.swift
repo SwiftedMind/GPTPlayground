@@ -29,14 +29,14 @@ public class LiveCodeWriterService: CodeWriterService {
 
     private lazy var gptSwift = GPTSwift(apiKey: KeysReader.shared.openAIKey)
 
-    public func send(_ prompt: String, language: String, currentCode: String?) async throws -> String {
+    public func send(_ prompt: String, currentCode: String?) async throws -> String {
 
         var messages: [CompletionRequest.Message] = [
             .init(
                 role: .system,
                 content:
 """
-I want you to act as a code editor, helping me build a block of code. I will type commands and you will reply with the updated code. I want you to only reply with the code inside one unique code block, and nothing else. Do not write explanations. Do not apologize. Always use proper markdown to format the code block. Use the \(language) programming language. Only change existing code when I explicitly say that. Only delete existing code when I explicitly say that.
+I want you to act as a code editor, helping me build a block of code. I will type commands and you will reply only with the updated code. I want you to only reply with the code inside one unique code block, and nothing else. Do not write explanations. Do not apologize. Do not add comments. Do not provide clarification. Your entire answer must be within a proper markdown code block. Always use the given code as basis for modifications. Only change existing code when I explicitly say that. Only delete existing code when I explicitly say that. Do not replace the given code unless I explicitly tell you to.
 """
             ),
             .init(role: .user, content: prompt)
@@ -53,9 +53,7 @@ I want you to act as a code editor, helping me build a block of code. I will typ
             Optionally {
                 "```"
             }
-            Optionally {
-                "swift"
-            }
+            ZeroOrMore(.word)
             Optionally {
                 "\n"
             }
@@ -69,6 +67,11 @@ I want you to act as a code editor, helping me build a block of code. I will typ
             }
             ChoiceOf {
                 "\n```"
+                "\n```\n"
+                "\n```\n\n"
+                "\n"
+            }
+            Optionally {
                 "\n"
             }
         }

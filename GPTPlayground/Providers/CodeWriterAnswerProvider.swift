@@ -25,25 +25,76 @@ import SwiftUI
 import IdentifiedCollections
 import CodeWriterService
 
-@MainActor
-final class CodeWriterAnswerProvider: IndependentProvider {
-    var service: CodeWriterService = .live
+@propertyWrapper
+public struct Service<S>: DynamicProperty {
 
-    @Published var generatedCode: AttributedString = ""
-    @Published var isLoading: Bool = false
+    @MainActor
+    final class Wrapper: ObservableObject {
+        let service: S
 
-    private var generatedCodeString: String = "" {
-        didSet {
-            generatedCode = try! generatedCodeString.highlightAsCode(colorScheme: .dark)
+        init(service: S) {
+            self.service = service
         }
     }
 
-    func commit(_ prompt: String, language: String) {
+    @StateObject private var wrapper: Wrapper
+
+    public var wrappedValue: S {
+        wrapper.service
+    }
+
+    public init(wrappedValue: S) {
+        self._wrapper = .init(wrappedValue: .init(service: wrappedValue))
+    }
+
+}
+
+struct CodeWriterAnswerProvider: View {
+    @Service private var service: CodeWriterService = .live
+    @State private var generatedCode: String = ""
+    @State private var previousGeneratedCodes: [String] = []
+    @State private var isLoading: Bool = false
+
+    var interface: Interface<CodeWriter.Action>
+
+    var body: some View {
+        CodeWriter(
+            interface: .handled(by: .handled(by: interface)),
+            providerInterface: .handled(by: handleProviderInterface),
+            code: generatedCode,
+            isLoading: isLoading
+        )
+    }
+
+    @MainActor
+    private func handleProviderInterface(_ action: CodeWriter.ProviderAction) {
+        switch action {
+        case .commit(let prompt):
+            commit(prompt)
+        case .undo:
+            undo()
+        case .reset:
+            reset()
+        }
+    }
+
+    private func commit(_ prompt: String) {
         Task {
             isLoading = true
-            let answer = try! await service.send(prompt, language: "Swift", currentCode: generatedCodeString)
+            let answer = try await service.send(prompt, currentCode: generatedCode)
             isLoading = false
-            generatedCodeString = answer
+            previousGeneratedCodes.append(generatedCode)
+            generatedCode = answer
         }
+    }
+
+    private func reset() {
+        generatedCode = ""
+        previousGeneratedCodes.removeAll()
+        isLoading = false
+    }
+
+    private func undo() {
+        generatedCode = previousGeneratedCodes.popLast() ?? ""
     }
 }

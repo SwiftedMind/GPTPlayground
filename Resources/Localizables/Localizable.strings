@@ -8,6 +8,8 @@
 
 // MARK: - Basic
 "prompt" = "Prompt";
+"undo" = "Undo";
+"reset" = "Reset";
 
 
 // MARK: - Basic Prompt
@@ -18,7 +20,8 @@
 
 // MARK: - Code Write
 "code-writer.title" = "Code Writer";
+"code-writer.copy-code" = "Copy Code";
 "code-writer.description" = "Generate code through natural language prompts.";
-"code-writer.empty-list.title" = "Enter a prompt to generate the first code snippet.\nAfterwards, you can improve the code by entering more prompts.";
+"code-writer.empty-list.title" = "Enter a prompt to generate the first code snippet.\nAfterwards, you can improve the code by entering more prompts.\nThis AI is trying to keep the generated code consistent so that you can iteratively improve it by adding prompts.";
 "code-writer.submit-button.title" = "Submit Prompt";
 

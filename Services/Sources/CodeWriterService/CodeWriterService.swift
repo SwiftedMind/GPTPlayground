@@ -23,7 +23,7 @@
 import SwiftUI
 
 public protocol CodeWriterService {
-    func send(_ prompt: String, language: String, currentCode: String?) async throws -> String
+    func send(_ prompt: String, currentCode: String?) async throws -> String
 }
 
 public enum CodeWriterServiceError: Error {

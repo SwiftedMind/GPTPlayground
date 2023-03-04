@@ -9,6 +9,10 @@ import SwiftUI
 public enum Localized {
   /// Prompt
   public static let prompt = LocalizedString(lookupKey: "prompt")
+  /// Reset
+  public static let reset = LocalizedString(lookupKey: "reset")
+  /// Undo
+  public static let undo = LocalizedString(lookupKey: "undo")
   public enum BasicPrompt {
     /// Each prompt will be sent alone, the AI will not remember any previous prompts.
     public static let description = LocalizedString(lookupKey: "basic-prompt.description")
@@ -22,12 +26,14 @@ public enum Localized {
     }
   }
   public enum CodeWriter {
+    /// Copy Code
+    public static let copyCode = LocalizedString(lookupKey: "code-writer.copy-code")
     /// Generate code through natural language prompts.
     public static let description = LocalizedString(lookupKey: "code-writer.description")
     /// Code Writer
     public static let title = LocalizedString(lookupKey: "code-writer.title")
     public enum EmptyList {
-      /// Enter a prompt to generate the first code snippet.\nAfterwards, you can improve the code by entering more prompts.
+      /// Enter a prompt to generate the first code snippet.\nAfterwards, you can improve the code by entering more prompts.\nThis AI is trying to keep the generated code consistent so that you can iteratively improve it by adding prompts.
       public static let title = LocalizedString(lookupKey: "code-writer.empty-list.title")
     }
     public enum SubmitButton {

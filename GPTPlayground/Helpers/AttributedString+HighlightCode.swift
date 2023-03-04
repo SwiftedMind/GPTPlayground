@@ -24,9 +24,9 @@ import SwiftUI
 import Highlightr
 
 public extension String {
-    func highlightAsCode(colorScheme: ColorScheme) throws -> AttributedString {
+    func highlightAsCode(colorScheme: ColorScheme) -> AttributedString? {
         guard let highlightr = Highlightr() else {
-            throw CodeHighlightError.couldNotLoadHighlightr
+            return nil
         }
 
         switch colorScheme {
@@ -38,8 +38,8 @@ public extension String {
             highlightr.setTheme(to: "solarized-dark")
         }
 
-        guard let highlightedCode = highlightr.highlight(self, as: "Swift") else {
-            throw CodeHighlightError.failedToHighlightCode
+        guard let highlightedCode = highlightr.highlight(self) else {
+            return nil
         }
 
         return AttributedString(highlightedCode)
