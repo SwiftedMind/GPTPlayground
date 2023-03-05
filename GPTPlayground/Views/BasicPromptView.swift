@@ -57,6 +57,7 @@ struct BasicPromptView: View {
             )
             .onSubmit {
                 isFocused = true
+                guard !state.prompt.isEmpty else { return }
                 interface.sendAction(.didCommit)
             }
             .padding(5)

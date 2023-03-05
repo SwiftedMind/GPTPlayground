@@ -42,15 +42,7 @@ struct CompactRootNavigator: Navigator {
     private func destination(for path: Path) -> some View {
         switch path {
         case .basicPrompt:
-            WithProvider(BasicPromptAnswerProvider.self) { provider in
-                BasicPrompt(
-                    answers: provider.answers,
-                    onCommit: provider.commit,
-                    onUndo: provider.undo,
-                    onReset: provider.reset,
-                    onAnswersDeleted: provider.deleteAnswers
-                )
-            }
+            BasicPromptAnswerProvider()
         case .codeWriter:
             CodeWriterAnswerProvider(interface: .handled(by: handleCodeWriterInterface))
         }

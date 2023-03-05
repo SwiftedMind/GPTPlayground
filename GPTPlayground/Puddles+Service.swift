@@ -21,38 +21,27 @@
 //
 
 import SwiftUI
-import Puddles
 
-struct RootNavigator: Navigator {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+// TODO: Move to Puddles if it turns out useful
+@propertyWrapper
+public struct Service<S>: DynamicProperty {
 
-    // MARK: - Root
+    @MainActor
+    final class Wrapper: ObservableObject {
+        let service: S
 
-    var root: some View {
-        switch horizontalSizeClass {
-        case .compact:
-            CompactRootNavigator()
-        case .regular, .none:
-            RegularRootNavigator()
-        @unknown default:
-            RegularRootNavigator()
+        init(service: S) {
+            self.service = service
         }
     }
 
-    // MARK: - State Configuration
+    @StateObject private var wrapper: Wrapper
 
-    func applyStateConfiguration(_ configuration: StateConfiguration) {
-        switch configuration {
-        case .reset:
-            break
-        }
+    public var wrappedValue: S {
+        wrapper.service
     }
 
-}
-
-extension RootNavigator {
-
-    enum StateConfiguration: Hashable {
-        case reset
+    public init(wrappedValue: S) {
+        self._wrapper = .init(wrappedValue: .init(service: wrappedValue))
     }
 }

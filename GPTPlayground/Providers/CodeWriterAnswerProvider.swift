@@ -25,30 +25,6 @@ import SwiftUI
 import IdentifiedCollections
 import CodeWriterService
 
-@propertyWrapper
-public struct Service<S>: DynamicProperty {
-
-    @MainActor
-    final class Wrapper: ObservableObject {
-        let service: S
-
-        init(service: S) {
-            self.service = service
-        }
-    }
-
-    @StateObject private var wrapper: Wrapper
-
-    public var wrappedValue: S {
-        wrapper.service
-    }
-
-    public init(wrappedValue: S) {
-        self._wrapper = .init(wrappedValue: .init(service: wrappedValue))
-    }
-
-}
-
 struct CodeWriterAnswerProvider: View {
     @Service private var service: CodeWriterService = .live
     @State private var generatedCode: String = ""

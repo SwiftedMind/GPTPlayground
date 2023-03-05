@@ -27,11 +27,10 @@ import IdentifiedCollections
 struct CodeWriter: Coordinator {
     @Environment(\.colorScheme) private var colorScheme
 
-    let interface: Interface<Action>
-    let providerInterface: Interface<ProviderAction>
-
     @State private var prompt: String = ""
     @State private var attributedCode: AttributedString = ""
+    var interface: Interface<Action>
+    var providerInterface: Interface<ProviderAction>
     var code: String = ""
     var isLoading: Bool = false
 
@@ -45,7 +44,7 @@ struct CodeWriter: Coordinator {
             )
         )
         .onChange(of: code) { newValue in
-            attributedCode = newValue.highlightAsCode(colorScheme: colorScheme) ?? ""
+            attributedCode = newValue.highlightAsCode(colorScheme: colorScheme) ?? "ERROR"
         }
         .navigationTitle(Localized.CodeWriter.title.string)
         .navigationBarTitleDisplayMode(.inline)
@@ -95,6 +94,7 @@ extension CodeWriter {
     enum Action: Hashable {
         case noAction
     }
+
     enum ProviderAction: Hashable {
         case commit(prompt: String)
         case undo

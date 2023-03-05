@@ -27,11 +27,9 @@ import IdentifiedCollections
 struct BasicPrompt: Coordinator {
 
     @State private var prompt: String = ""
+
+    var providerInterface: Interface<ProviderAction>
     var answers: IdentifiedArrayOf<BasicPromptView.Answer>
-    var onCommit: @MainActor (String) -> Void
-    var onUndo: @MainActor () -> Void
-    var onReset: @MainActor () -> Void
-    var onAnswersDeleted: @MainActor (IndexSet) -> Void
 
     var entryView: some View {
         BasicPromptView(
@@ -51,10 +49,10 @@ struct BasicPrompt: Coordinator {
         case .didChangePrompt(let newValue):
             prompt = newValue
         case .didCommit:
-            onCommit(prompt)
+            providerInterface.sendAction(.commit(prompt: prompt))
             prompt = ""
         case .didDeleteAnswers(let indexSet):
-            onAnswersDeleted(indexSet)
+            providerInterface.sendAction(.deleteAnswers(offsets: indexSet))
         }
     }
 
@@ -64,13 +62,13 @@ struct BasicPrompt: Coordinator {
     private var toolbarContent: some ToolbarContent {
         ToolbarItemGroup(placement: .primaryAction) {
             Button {
-                onUndo()
+                providerInterface.sendAction(.undo)
             } label: {
                 Image(systemName: "arrow.uturn.backward.circle")
             }
             .disabled(answers.isEmpty)
             Button {
-                onReset()
+                providerInterface.sendAction(.reset)
             } label: {
                 Image(systemName: "xmark.circle")
             }
@@ -82,5 +80,12 @@ struct BasicPrompt: Coordinator {
 extension BasicPrompt {
     enum Action {
         case didTapBasicPrompt
+    }
+
+    enum ProviderAction: Hashable {
+        case commit(prompt: String)
+        case undo
+        case reset
+        case deleteAnswers(offsets: IndexSet)
     }
 }

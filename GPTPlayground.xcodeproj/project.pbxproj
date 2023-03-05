@@ -30,6 +30,7 @@
 		9564D0ED29B3432200F45768 /* swiftgen-assets.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9564D0EB29B3432200F45768 /* swiftgen-assets.yml */; };
 		9564D0F029B3435500F45768 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0EF29B3435400F45768 /* Localized.swift */; };
 		9564D0F229B3460200F45768 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0F129B3460200F45768 /* Assets.swift */; };
+		957D0F2929B4BB8E0099444D /* Puddles+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D0F2829B4BB8E0099444D /* Puddles+Service.swift */; };
 		95C41F2229B26F5A0095E43F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C41F2129B26F5A0095E43F /* App.swift */; };
 		95C41F2629B26F5C0095E43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C41F2529B26F5C0095E43F /* Assets.xcassets */; };
 		95C41F2A29B26F5C0095E43F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C41F2929B26F5C0095E43F /* Preview Assets.xcassets */; };
@@ -68,6 +69,8 @@
 		9564D0EB29B3432200F45768 /* swiftgen-assets.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "swiftgen-assets.yml"; sourceTree = "<group>"; };
 		9564D0EF29B3435400F45768 /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		9564D0F129B3460200F45768 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		957D0F2729B4BA830099444D /* GPTSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPTSwift; path = ../GPTSwift; sourceTree = "<group>"; };
+		957D0F2829B4BB8E0099444D /* Puddles+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puddles+Service.swift"; sourceTree = "<group>"; };
 		95C41F1E29B26F5A0095E43F /* GPTPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPTPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C41F2129B26F5A0095E43F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95C41F2529B26F5C0095E43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		95C41F1529B26F5A0095E43F = {
 			isa = PBXGroup;
 			children = (
+				957D0F2729B4BA830099444D /* GPTSwift */,
 				9564D0D329B285D600F45768 /* Services */,
 				95C41F2029B26F5A0095E43F /* GPTPlayground */,
 				9564D0E029B3429200F45768 /* Resources */,
@@ -165,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				95C41F2129B26F5A0095E43F /* App.swift */,
+				957D0F2829B4BB8E0099444D /* Puddles+Service.swift */,
 				95D21EA829B27D6A00D53378 /* Providers */,
 				95C41F3929B270460095E43F /* Navigators */,
 				95C41F3A29B2704C0095E43F /* Coordinators */,
@@ -393,6 +398,7 @@
 				9504B92629B382B700B0B516 /* CodeWriterAnswerProvider.swift in Sources */,
 				9564D0D929B3360100F45768 /* Sidebar.swift in Sources */,
 				95C41F4B29B276560095E43F /* Faker.swift in Sources */,
+				957D0F2929B4BB8E0099444D /* Puddles+Service.swift in Sources */,
 				9504B92229B3764600B0B516 /* ProgrammingLanguage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +528,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "GPT Playground";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -560,6 +567,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "GPT Playground";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

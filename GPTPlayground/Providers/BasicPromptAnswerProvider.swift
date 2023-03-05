@@ -25,8 +25,65 @@ import SwiftUI
 import IdentifiedCollections
 import BasicPromptService
 
+struct BasicPromptAnswerProvider: View {
+    @Service private var service: BasicPromptService = .live
+
+    @State private var answers: IdentifiedArrayOf<BasicPromptView.Answer> = []
+    @State private var previousConversation: [(question: String, answer: String)] = []
+
+    var body: some View {
+        BasicPrompt(
+            providerInterface: .handled(by: handleProviderInterface),
+            answers: answers
+        )
+    }
+
+    @MainActor
+    private func handleProviderInterface(_ action: BasicPrompt.ProviderAction) {
+        switch action {
+        case let .commit(prompt):
+            commit(prompt)
+        case let .deleteAnswers(offsets):
+            deleteAnswers(atOffsets: offsets)
+        case .undo:
+            undo()
+        case .reset:
+            reset()
+        }
+    }
+
+    private func commit(_ prompt: String) {
+        Task {
+            let answer = BasicPromptView.Answer(prompt: prompt, value: .loading)
+            do {
+                answers.insert(answer, at: 0)
+                let value = try await service.send(prompt, previousConversation: previousConversation)
+                previousConversation.insert((prompt, value), at: 0)
+                answers[id: answer.id]?.value = .loaded(value)
+            } catch {
+                answers[id: answer.id]?.value = .failure(error)
+                print("An error occurred: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    private func deleteAnswers(atOffsets indexSet: IndexSet) {
+        answers.remove(atOffsets: indexSet)
+    }
+
+    private func reset() {
+        previousConversation.removeAll()
+        answers.removeAll()
+    }
+
+    private func undo() {
+        previousConversation.removeFirst()
+        answers.removeFirst()
+    }
+}
+
 @MainActor
-final class BasicPromptAnswerProvider: IndependentProvider {
+final class _BasicPromptAnswerProvider: IndependentProvider {
     var service: BasicPromptService = .live
 
     @Published var answers: IdentifiedArrayOf<BasicPromptView.Answer> = []
@@ -35,10 +92,15 @@ final class BasicPromptAnswerProvider: IndependentProvider {
     func commit(_ prompt: String) {
         Task {
             let answer = BasicPromptView.Answer(prompt: prompt, value: .loading)
-            answers.insert(answer, at: 0)
-            let value = try await service.send(prompt, previousConversation: previousConversation)
-            previousConversation.insert((prompt, value), at: 0)
-            answers[id: answer.id]?.value = .loaded(value)
+            do {
+                answers.insert(answer, at: 0)
+                let value = try await service.send(prompt, previousConversation: previousConversation)
+                previousConversation.insert((prompt, value), at: 0)
+                answers[id: answer.id]?.value = .loaded(value)
+            } catch {
+                answers[id: answer.id]?.value = .failure(error)
+                print("An error occurred: \(error.localizedDescription)")
+            }
         }
     }
 
