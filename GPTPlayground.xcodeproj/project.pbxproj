@@ -30,7 +30,6 @@
 		9564D0ED29B3432200F45768 /* swiftgen-assets.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9564D0EB29B3432200F45768 /* swiftgen-assets.yml */; };
 		9564D0F029B3435500F45768 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0EF29B3435400F45768 /* Localized.swift */; };
 		9564D0F229B3460200F45768 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0F129B3460200F45768 /* Assets.swift */; };
-		957D0F0929B48DE40099444D /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D0F0829B48DE40099444D /* Demo.swift */; };
 		95C41F2229B26F5A0095E43F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C41F2129B26F5A0095E43F /* App.swift */; };
 		95C41F2629B26F5C0095E43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C41F2529B26F5C0095E43F /* Assets.xcassets */; };
 		95C41F2A29B26F5C0095E43F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C41F2929B26F5C0095E43F /* Preview Assets.xcassets */; };
@@ -69,7 +68,6 @@
 		9564D0EB29B3432200F45768 /* swiftgen-assets.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "swiftgen-assets.yml"; sourceTree = "<group>"; };
 		9564D0EF29B3435400F45768 /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		9564D0F129B3460200F45768 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		957D0F0829B48DE40099444D /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 		95C41F1E29B26F5A0095E43F /* GPTPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPTPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C41F2129B26F5A0095E43F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95C41F2529B26F5C0095E43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +105,7 @@
 		9564D0E029B3429200F45768 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9564D0D629B2880100F45768 /* Keys.plist */,
 				9564D0E929B3430D00F45768 /* Assets */,
 				9564D0E129B3429900F45768 /* Localizables */,
 			);
@@ -173,7 +172,6 @@
 				95C41F2729B26F5C0095E43F /* GPTPlayground.entitlements */,
 				95C41F4729B276560095E43F /* Helpers */,
 				95C41F2829B26F5C0095E43F /* Preview Content */,
-				9564D0D629B2880100F45768 /* Keys.plist */,
 			);
 			path = GPTPlayground;
 			sourceTree = "<group>";
@@ -244,7 +242,6 @@
 				953280BB29B357700038495A /* Color.swift */,
 				9504B91F29B36A8E00B0B516 /* AttributedString+HighlightCode.swift */,
 				9504B92129B3764600B0B516 /* ProgrammingLanguage.swift */,
-				957D0F0829B48DE40099444D /* Demo.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -389,7 +386,6 @@
 				95C41F5529B27A0D0095E43F /* Error+Extension.swift in Sources */,
 				95C41F4429B271540095E43F /* DisclosureButton.swift in Sources */,
 				9504B91E29B3676B00B0B516 /* CodeWriterView.swift in Sources */,
-				957D0F0929B48DE40099444D /* Demo.swift in Sources */,
 				9564D0DB29B3376100F45768 /* SidebarView.swift in Sources */,
 				95C41F4629B2730D0095E43F /* BasicPromptView.swift in Sources */,
 				95C41F2229B26F5A0095E43F /* App.swift in Sources */,

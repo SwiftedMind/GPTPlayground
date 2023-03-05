@@ -47,7 +47,6 @@ I want you to act as a code editor, helping me build a block of code. I will typ
         }
 
         let answer = try await gptSwift.askChatGPT(messages: messages)
-        dump(answer.choices)
         let codeCapture = Reference(Substring.self)
         let regex = Regex {
             Optionally {

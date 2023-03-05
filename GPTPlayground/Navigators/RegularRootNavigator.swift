@@ -34,8 +34,6 @@ struct RegularRootNavigator: Navigator {
     
     // MARK: - Root
     
-    @State private var path: [Path] = []
-    
     var root: some View {
         NavigationSplitView() {
             Sidebar(selection: $selection)
@@ -69,7 +67,7 @@ struct RegularRootNavigator: Navigator {
     func applyStateConfiguration(_ configuration: StateConfiguration) {
         switch configuration {
         case .reset:
-            path.removeAll()
+            break
         }
     }
     
