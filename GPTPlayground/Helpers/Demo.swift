@@ -20,24 +20,35 @@
 //  SOFTWARE.
 //
 
-import SwiftUI
+import Foundation
+import GPTSwift
 
-public protocol BasicPromptService {
-    func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> String
-}
+func askChatGPT() async throws {
+    let gptSwift = GPTSwift(apiKey: "YOUR_API_KEY")
 
-public enum BasicPromptServiceError: Error {
-    case couldNotFetchAnswer
-}
+    // Basic query
+    let firstResponse = try await gptSwift.askChatGPT("What is the answer to life, the universe and everything in it?")
+    print(firstResponse.choices.map(\.message))
 
-public extension BasicPromptService where Self == LiveBasicPromptService {
-    static var live: Self {
-        .init()
-    }
-}
+    // Send multiple messages
+    let secondResponse = try await gptSwift.askChatGPT(
+        messages: [
+            ChatMessage(role: .system, content: "You are a dog."),
+            ChatMessage(role: .user, content: "Do you actually like playing fetch?")
+        ]
+    )
+    print(secondResponse.choices.map(\.message))
 
-public extension BasicPromptService where Self == MockBasicPromptService {
-    static var mock: Self {
-        .init()
-    }
+    // Full control
+    var fullRequest = ChatRequest(
+        messages: [
+            .init(role: .system, content: "You are the pilot of an alien UFO. Be creative."),
+            .init(role: .user, content: "Where do you come from?")
+        ]
+    )
+    fullRequest.temperature = 0.8
+    fullRequest.numberOfAnswers = 2
+
+    let thirdResponse = try await gptSwift.askChatGPT(request: fullRequest)
+    print(thirdResponse.choices.map(\.message))
 }

@@ -24,7 +24,7 @@ import SwiftUI
 
 public class MockBasicPromptService: BasicPromptService {
 
-    public func send(_ prompt: String) async throws -> String {
+    public func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> String {
         try await Task.sleep(for: .seconds(2))
         return "Space Exploration Technologies Corp. is an American spacecraft manufacturer, launcher, and a satellite communications corporation headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk with the stated goal of reducing space transportation costs to enable the colonization of Mars."
     }

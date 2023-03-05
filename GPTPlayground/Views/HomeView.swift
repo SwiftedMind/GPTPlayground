@@ -25,25 +25,19 @@ import Puddles
 import PreviewDebugTools
 
 struct HomeView: View {
-
+    
     var interface: Interface<Action>
     var state: ViewState
-
+    
     var body: some View {
         List {
             Section {
                 DisclosureButton(title: Localized.BasicPrompt.title.string) {
                     interface.sendAction(.didTapBasicPrompt)
                 }
-            } footer: {
-                Text("Send a prompt and receive an answer. No memory, no conversations.")
-            }
-            Section {
                 DisclosureButton(title: Localized.CodeWriter.title.string) {
                     interface.sendAction(.didTapCodeWriter)
                 }
-            } footer: {
-                Text(Localized.CodeWriter.description.string)
             }
         }
     }
@@ -51,12 +45,12 @@ struct HomeView: View {
 
 extension HomeView {
     struct ViewState {
-
+        
         static var mock: Self {
             .init()
         }
     }
-
+    
     enum Action {
         case didTapBasicPrompt
         case didTapCodeWriter

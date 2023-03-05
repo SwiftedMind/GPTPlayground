@@ -29,20 +29,20 @@ struct Sidebar: Coordinator {
     @Binding var selection: Panel?
 
     var entryView: some View {
-        List(selection: $selection) {
-            Section {
-                NavigationLink(Localized.BasicPrompt.title.string, value: Panel.basicPrompt)
-            } footer: {
-                Text(Localized.BasicPrompt.description.string)
-            }
-            Section {
-                NavigationLink(Localized.CodeWriter.title.string, value: Panel.codeWriter)
-            } footer: {
-                Text(Localized.CodeWriter.description.string)
-            }
-        }
-        .listStyle(.insetGrouped)
+        SidebarView(
+            interface: .handled(by: handleViewInterface),
+            state: .init(
+                selection: selection
+            )
+        )
         .navigationTitle("Tools")
     }
-
+    
+    @MainActor
+    private func handleViewInterface(_ action: SidebarView.Action) {
+        switch action {
+        case let .didChangeSelection(newValue):
+            selection = newValue
+        }
+    }
 }

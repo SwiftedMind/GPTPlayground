@@ -39,18 +39,7 @@ struct BasicPromptView: View {
         .animation(.default, value: state.answers)
         .onAppear { isFocused = true }
         .safeAreaInset(edge: .bottom) {
-            Button(Localized.BasicPrompt.SubmitButton.title.string) {
-                isFocused = false
-                interface.sendAction(.didCommit)
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(state.prompt.isEmpty)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background {
-                Color(uiColor: .systemGroupedBackground)
-                    .ignoresSafeArea(.container, edges: .bottom)
-            }
+            submitButton
         }
         .scrollDismissesKeyboard(.interactively)
     }
@@ -62,14 +51,14 @@ struct BasicPromptView: View {
                 .font(.headline)
                 .foregroundColor(.App.primaryTextOnAccent)
                 .listRowBackground(Color.App.accent.saturation(0.5))
-            Text(Localized.BasicPrompt.description.string)
-                .font(.caption)
-                .foregroundColor(.gray)
             TextField(
                 Localized.prompt.string,
-                text: interface.binding(state.prompt, to: { .didChangePrompt($0) }),
-                axis: .vertical
+                text: interface.binding(state.prompt, to: { .didChangePrompt($0) })
             )
+            .onSubmit {
+                isFocused = true
+                interface.sendAction(.didCommit)
+            }
             .padding(5)
             .focused($isFocused)
         }
@@ -79,9 +68,12 @@ struct BasicPromptView: View {
     private var answerSection: some View {
 
         if state.answers.isEmpty {
+            Text(Localized.BasicPrompt.description.string)
+                .font(.caption)
+                .foregroundColor(.gray)
         } else {
-            ForEach(state.answers) { answer in
-                Section {
+            Section {
+                ForEach(state.answers) { answer in
                     VStack(alignment: .leading) {
                         Text(answer.prompt)
                             .foregroundColor(.gray)
@@ -95,14 +87,28 @@ struct BasicPromptView: View {
                                 .foregroundColor(.red)
                         case let .loaded(value):
                             Text(value)
+                                .textSelection(.enabled)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .listRowSeparator(.hidden)
+                .onDelete { interface.sendAction(.didDeleteAnswers($0)) }
             }
-            .onDelete { interface.sendAction(.didDeleteAnswers($0)) }
         }
+    }
+
+    @ViewBuilder @MainActor
+    private var submitButton: some View {
+        Button {
+            interface.sendAction(.didCommit)
+        } label: {
+            Text(Localized.CodeWriter.SubmitButton.title.string)
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity)
+                .background(state.prompt.isEmpty ? Color.gray : Color.App.accent)
+                .foregroundColor(Color.App.primaryTextOnAccent)
+        }
+        .disabled(state.prompt.isEmpty)
     }
 }
 

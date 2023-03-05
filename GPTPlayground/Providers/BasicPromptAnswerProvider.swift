@@ -30,18 +30,30 @@ final class BasicPromptAnswerProvider: IndependentProvider {
     var service: BasicPromptService = .live
 
     @Published var answers: IdentifiedArrayOf<BasicPromptView.Answer> = []
+    private var previousConversation: [(question: String, answer: String)] = []
 
     func commit(_ prompt: String) {
         Task {
             let answer = BasicPromptView.Answer(prompt: prompt, value: .loading)
             answers.insert(answer, at: 0)
-            let value = try! await service.send(prompt)
+            let value = try await service.send(prompt, previousConversation: previousConversation)
+            previousConversation.insert((prompt, value), at: 0)
             answers[id: answer.id]?.value = .loaded(value)
         }
     }
 
     func deleteAnswers(atOffsets indexSet: IndexSet) {
         answers.remove(atOffsets: indexSet)
+    }
+
+    func reset() {
+        previousConversation.removeAll()
+        answers.removeAll()
+    }
+
+    func undo() {
+        previousConversation.removeFirst()
+        answers.removeFirst()
     }
 
 }

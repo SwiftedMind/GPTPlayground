@@ -28,8 +28,12 @@ public class LiveBasicPromptService: BasicPromptService {
 
     private lazy var gptSwift = GPTSwift(apiKey: KeysReader.shared.openAIKey)
 
-    public func send(_ prompt: String) async throws -> String {
-        let answer = try await gptSwift.commit(prompt)
+    public func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> String {
+        let instructionMessage = ChatMessage(role: .system, content: "I want you to be a helpful, generic chat companion. Answer concise and focused, do not add any personal flavor. Stay topical and only answer the question.")
+        let pastConversationMessages = previousConversation.flatMap { [ChatMessage(role: .user, content: $0.question), ChatMessage(role: .assistant, content: $0.answer)] }
+        let newPromptMessage = ChatMessage(role: .user, content: prompt)
+
+        let answer = try await gptSwift.askChatGPT(messages: [instructionMessage] + pastConversationMessages + [newPromptMessage])
 
         if let value = answer.choices.first?.message.content {
             return value.trimmingCharacters(in: .whitespacesAndNewlines)

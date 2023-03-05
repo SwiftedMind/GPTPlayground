@@ -30,13 +30,12 @@ struct SidebarView: View {
     var state: ViewState
 
     var body: some View {
-        List(selection: interface.binding(state.panel, to: { .didChangePanel($0) })) {
+        List(
+            selection: interface.binding(state.selection, to: { .didChangeSelection($0) })
+        ) {
             Section {
-                NavigationLink("Basic Prompt", value: Panel.basicPrompt)
-            } header: {
-                Text("dhfkj")
-            } footer: {
-                Text("ABC")
+                NavigationLink(Localized.BasicPrompt.title.string, value: Panel.basicPrompt)
+                NavigationLink(Localized.CodeWriter.title.string, value: Panel.codeWriter)
             }
         }
         .listStyle(.insetGrouped)
@@ -45,16 +44,16 @@ struct SidebarView: View {
 
 extension SidebarView {
     struct ViewState {
-
-        var panel: Panel?
-
+        
+        var selection: Panel?
+        
         static var mock: Self {
             .init()
         }
     }
 
     enum Action {
-        case didChangePanel(Panel?)
+        case didChangeSelection(Panel?)
     }
 }
 

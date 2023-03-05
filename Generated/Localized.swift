@@ -14,7 +14,7 @@ public enum Localized {
   /// Undo
   public static let undo = LocalizedString(lookupKey: "undo")
   public enum BasicPrompt {
-    /// Each prompt will be sent alone, the AI will not remember any previous prompts.
+    /// The API is instructed to answer in a concise and factual manner, without adding any "fluff" or unnecessary extras.\n\nYou can copy answers by long pressing.
     public static let description = LocalizedString(lookupKey: "basic-prompt.description")
     /// What do do you want to ask GPT?
     public static let headline = LocalizedString(lookupKey: "basic-prompt.headline")
@@ -33,7 +33,7 @@ public enum Localized {
     /// Code Writer
     public static let title = LocalizedString(lookupKey: "code-writer.title")
     public enum EmptyList {
-      /// Enter a prompt to generate the first code snippet.\nAfterwards, you can improve the code by entering more prompts.\nThis AI is trying to keep the generated code consistent so that you can iteratively improve it by adding prompts.
+      /// Enter a prompt to generate the first code snippet. Afterwards, you can improve the code by entering more prompts.\n\nThis AI is instructed to keep the generated code consistent so that you can iteratively improve it by adding prompts.
       public static let title = LocalizedString(lookupKey: "code-writer.empty-list.title")
     }
     public enum SubmitButton {

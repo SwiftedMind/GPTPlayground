@@ -11,17 +11,16 @@
 "undo" = "Undo";
 "reset" = "Reset";
 
-
 // MARK: - Basic Prompt
 "basic-prompt.title" = "Basic Prompt";
 "basic-prompt.headline" = "What do do you want to ask GPT?";
-"basic-prompt.description" = "Each prompt will be sent alone, the AI will not remember any previous prompts.";
+"basic-prompt.description" = "The API is instructed to answer in a concise and factual manner, without adding any \"fluff\" or unnecessary extras.\n\nYou can copy answers by long pressing.";
 "basic-prompt.submit-button.title" = "Submit Prompt";
 
 // MARK: - Code Write
 "code-writer.title" = "Code Writer";
 "code-writer.copy-code" = "Copy Code";
 "code-writer.description" = "Generate code through natural language prompts.";
-"code-writer.empty-list.title" = "Enter a prompt to generate the first code snippet.\nAfterwards, you can improve the code by entering more prompts.\nThis AI is trying to keep the generated code consistent so that you can iteratively improve it by adding prompts.";
+"code-writer.empty-list.title" = "Enter a prompt to generate the first code snippet. Afterwards, you can improve the code by entering more prompts.\n\nThis AI is instructed to keep the generated code consistent so that you can iteratively improve it by adding prompts.";
 "code-writer.submit-button.title" = "Submit Prompt";
 

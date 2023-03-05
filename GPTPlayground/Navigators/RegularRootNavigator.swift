@@ -54,6 +54,8 @@ struct RegularRootNavigator: Navigator {
                 BasicPrompt(
                     answers: provider.answers,
                     onCommit: provider.commit,
+                    onUndo: provider.undo,
+                    onReset: provider.reset,
                     onAnswersDeleted: provider.deleteAnswers
                 )
             }

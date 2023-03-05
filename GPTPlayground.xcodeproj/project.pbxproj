@@ -13,6 +13,8 @@
 		9504B92229B3764600B0B516 /* ProgrammingLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504B92129B3764600B0B516 /* ProgrammingLanguage.swift */; };
 		9504B92429B3781A00B0B516 /* CodeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504B92329B3781A00B0B516 /* CodeWriter.swift */; };
 		9504B92629B382B700B0B516 /* CodeWriterAnswerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504B92529B382B700B0B516 /* CodeWriterAnswerProvider.swift */; };
+		9504B92C29B48A9900B0B516 /* PreviewDebugTools in Frameworks */ = {isa = PBXBuildFile; productRef = 9504B92B29B48A9900B0B516 /* PreviewDebugTools */; };
+		9504B92E29B48A9900B0B516 /* Puddles in Frameworks */ = {isa = PBXBuildFile; productRef = 9504B92D29B48A9900B0B516 /* Puddles */; };
 		953280BC29B357700038495A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953280BB29B357700038495A /* Color.swift */; };
 		9564D0CA29B280F700F45768 /* BasicPromptAnswerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */; };
 		9564D0D529B2861A00F45768 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = 9564D0D429B2861A00F45768 /* Services */; };
@@ -28,12 +30,10 @@
 		9564D0ED29B3432200F45768 /* swiftgen-assets.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9564D0EB29B3432200F45768 /* swiftgen-assets.yml */; };
 		9564D0F029B3435500F45768 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0EF29B3435400F45768 /* Localized.swift */; };
 		9564D0F229B3460200F45768 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0F129B3460200F45768 /* Assets.swift */; };
+		957D0F0929B48DE40099444D /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D0F0829B48DE40099444D /* Demo.swift */; };
 		95C41F2229B26F5A0095E43F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C41F2129B26F5A0095E43F /* App.swift */; };
 		95C41F2629B26F5C0095E43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C41F2529B26F5C0095E43F /* Assets.xcassets */; };
 		95C41F2A29B26F5C0095E43F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C41F2929B26F5C0095E43F /* Preview Assets.xcassets */; };
-		95C41F3329B26FAC0095E43F /* GPTSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 95C41F3229B26FAC0095E43F /* GPTSwift */; };
-		95C41F3629B2703E0095E43F /* PreviewDebugTools in Frameworks */ = {isa = PBXBuildFile; productRef = 95C41F3529B2703E0095E43F /* PreviewDebugTools */; };
-		95C41F3829B2703E0095E43F /* Puddles in Frameworks */ = {isa = PBXBuildFile; productRef = 95C41F3729B2703E0095E43F /* Puddles */; };
 		95C41F3F29B2708C0095E43F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C41F3E29B2708C0095E43F /* HomeView.swift */; };
 		95C41F4429B271540095E43F /* DisclosureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C41F4329B271540095E43F /* DisclosureButton.swift */; };
 		95C41F4629B2730D0095E43F /* BasicPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C41F4529B2730D0095E43F /* BasicPromptView.swift */; };
@@ -69,13 +69,12 @@
 		9564D0EB29B3432200F45768 /* swiftgen-assets.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "swiftgen-assets.yml"; sourceTree = "<group>"; };
 		9564D0EF29B3435400F45768 /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		9564D0F129B3460200F45768 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		957D0F0829B48DE40099444D /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 		95C41F1E29B26F5A0095E43F /* GPTPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPTPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C41F2129B26F5A0095E43F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95C41F2529B26F5C0095E43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95C41F2729B26F5C0095E43F /* GPTPlayground.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPTPlayground.entitlements; sourceTree = "<group>"; };
 		95C41F2929B26F5C0095E43F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		95C41F3029B26FA50095E43F /* GPTSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPTSwift; path = ../GPTSwift; sourceTree = "<group>"; };
-		95C41F3429B270330095E43F /* Puddles */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Puddles; path = ../Puddles; sourceTree = "<group>"; };
 		95C41F3E29B2708C0095E43F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		95C41F4329B271540095E43F /* DisclosureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureButton.swift; sourceTree = "<group>"; };
 		95C41F4529B2730D0095E43F /* BasicPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPromptView.swift; sourceTree = "<group>"; };
@@ -93,13 +92,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9504B92C29B48A9900B0B516 /* PreviewDebugTools in Frameworks */,
+				9504B92E29B48A9900B0B516 /* Puddles in Frameworks */,
 				9564D0D529B2861A00F45768 /* Services in Frameworks */,
 				9504B91C29B3672B00B0B516 /* Highlightr in Frameworks */,
 				95C41F5329B276810095E43F /* IdentifiedCollections in Frameworks */,
 				95C41F5029B276710095E43F /* Fakery in Frameworks */,
-				95C41F3829B2703E0095E43F /* Puddles in Frameworks */,
-				95C41F3329B26FAC0095E43F /* GPTSwift in Frameworks */,
-				95C41F3629B2703E0095E43F /* PreviewDebugTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,8 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				9564D0D329B285D600F45768 /* Services */,
-				95C41F3429B270330095E43F /* Puddles */,
-				95C41F3029B26FA50095E43F /* GPTSwift */,
 				95C41F2029B26F5A0095E43F /* GPTPlayground */,
 				9564D0E029B3429200F45768 /* Resources */,
 				9564D0EE29B3432700F45768 /* Generated */,
@@ -248,6 +244,7 @@
 				953280BB29B357700038495A /* Color.swift */,
 				9504B91F29B36A8E00B0B516 /* AttributedString+HighlightCode.swift */,
 				9504B92129B3764600B0B516 /* ProgrammingLanguage.swift */,
+				957D0F0829B48DE40099444D /* Demo.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -279,13 +276,12 @@
 			);
 			name = GPTPlayground;
 			packageProductDependencies = (
-				95C41F3229B26FAC0095E43F /* GPTSwift */,
-				95C41F3529B2703E0095E43F /* PreviewDebugTools */,
-				95C41F3729B2703E0095E43F /* Puddles */,
 				95C41F4F29B276710095E43F /* Fakery */,
 				95C41F5229B276810095E43F /* IdentifiedCollections */,
 				9564D0D429B2861A00F45768 /* Services */,
 				9504B91B29B3672B00B0B516 /* Highlightr */,
+				9504B92B29B48A9900B0B516 /* PreviewDebugTools */,
+				9504B92D29B48A9900B0B516 /* Puddles */,
 			);
 			productName = GPTPlayground;
 			productReference = 95C41F1E29B26F5A0095E43F /* GPTPlayground.app */;
@@ -319,6 +315,8 @@
 				95C41F4E29B276710095E43F /* XCRemoteSwiftPackageReference "Fakery" */,
 				95C41F5129B276810095E43F /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
 				9504B91A29B3672B00B0B516 /* XCRemoteSwiftPackageReference "Highlightr" */,
+				9504B92A29B48A9900B0B516 /* XCRemoteSwiftPackageReference "Puddles" */,
+				957D0F0629B48B740099444D /* XCRemoteSwiftPackageReference "GPTSwift" */,
 			);
 			productRefGroup = 95C41F1F29B26F5A0095E43F /* Products */;
 			projectDirPath = "";
@@ -391,6 +389,7 @@
 				95C41F5529B27A0D0095E43F /* Error+Extension.swift in Sources */,
 				95C41F4429B271540095E43F /* DisclosureButton.swift in Sources */,
 				9504B91E29B3676B00B0B516 /* CodeWriterView.swift in Sources */,
+				957D0F0929B48DE40099444D /* Demo.swift in Sources */,
 				9564D0DB29B3376100F45768 /* SidebarView.swift in Sources */,
 				95C41F4629B2730D0095E43F /* BasicPromptView.swift in Sources */,
 				95C41F2229B26F5A0095E43F /* App.swift in Sources */,
@@ -537,7 +536,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -575,7 +574,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -622,6 +621,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		9504B92A29B48A9900B0B516 /* XCRemoteSwiftPackageReference "Puddles" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HavingThought/Puddles";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		957D0F0629B48B740099444D /* XCRemoteSwiftPackageReference "GPTSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftedMind/GPTSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		95C41F4E29B276710095E43F /* XCRemoteSwiftPackageReference "Fakery" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vadymmarkov/Fakery";
@@ -646,21 +661,19 @@
 			package = 9504B91A29B3672B00B0B516 /* XCRemoteSwiftPackageReference "Highlightr" */;
 			productName = Highlightr;
 		};
+		9504B92B29B48A9900B0B516 /* PreviewDebugTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9504B92A29B48A9900B0B516 /* XCRemoteSwiftPackageReference "Puddles" */;
+			productName = PreviewDebugTools;
+		};
+		9504B92D29B48A9900B0B516 /* Puddles */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9504B92A29B48A9900B0B516 /* XCRemoteSwiftPackageReference "Puddles" */;
+			productName = Puddles;
+		};
 		9564D0D429B2861A00F45768 /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Services;
-		};
-		95C41F3229B26FAC0095E43F /* GPTSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GPTSwift;
-		};
-		95C41F3529B2703E0095E43F /* PreviewDebugTools */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PreviewDebugTools;
-		};
-		95C41F3729B2703E0095E43F /* Puddles */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Puddles;
 		};
 		95C41F4F29B276710095E43F /* Fakery */ = {
 			isa = XCSwiftPackageProductDependency;

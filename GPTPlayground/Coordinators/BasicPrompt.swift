@@ -29,6 +29,8 @@ struct BasicPrompt: Coordinator {
     @State private var prompt: String = ""
     var answers: IdentifiedArrayOf<BasicPromptView.Answer>
     var onCommit: @MainActor (String) -> Void
+    var onUndo: @MainActor () -> Void
+    var onReset: @MainActor () -> Void
     var onAnswersDeleted: @MainActor (IndexSet) -> Void
 
     var entryView: some View {
@@ -40,6 +42,7 @@ struct BasicPrompt: Coordinator {
             )
         )
         .navigationTitle("Basic Prompt")
+        .toolbar { toolbarContent }
     }
 
     @MainActor
@@ -52,6 +55,26 @@ struct BasicPrompt: Coordinator {
             prompt = ""
         case .didDeleteAnswers(let indexSet):
             onAnswersDeleted(indexSet)
+        }
+    }
+
+    // MARK: - Toolbar
+
+    @ToolbarContentBuilder @MainActor
+    private var toolbarContent: some ToolbarContent {
+        ToolbarItemGroup(placement: .primaryAction) {
+            Button {
+                onUndo()
+            } label: {
+                Image(systemName: "arrow.uturn.backward.circle")
+            }
+            .disabled(answers.isEmpty)
+            Button {
+                onReset()
+            } label: {
+                Image(systemName: "xmark.circle")
+            }
+            .disabled(answers.isEmpty)
         }
     }
 }
