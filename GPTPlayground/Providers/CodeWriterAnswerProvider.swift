@@ -56,11 +56,16 @@ struct CodeWriterAnswerProvider: View {
 
     private func commit(_ prompt: String) {
         Task {
-            isLoading = true
-            let answer = try await service.send(prompt, currentCode: generatedCode)
-            isLoading = false
-            previousGeneratedCodes.append(generatedCode)
-            generatedCode = answer
+            do {
+                isLoading = true
+                let answer = try await service.send(prompt, currentCode: generatedCode)
+                isLoading = false
+                previousGeneratedCodes.append(generatedCode)
+                generatedCode = answer
+            } catch {
+                print("Something went wrong: \(error.localizedDescription)")
+                isLoading = false
+            }
         }
     }
 
