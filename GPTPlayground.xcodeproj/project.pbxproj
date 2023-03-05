@@ -67,8 +67,8 @@
 		9564D0EB29B3432200F45768 /* swiftgen-assets.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "swiftgen-assets.yml"; sourceTree = "<group>"; };
 		9564D0EF29B3435400F45768 /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		9564D0F129B3460200F45768 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		957D0F2729B4BA830099444D /* GPTSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPTSwift; path = ../GPTSwift; sourceTree = "<group>"; };
 		957D0F2829B4BB8E0099444D /* Puddles+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puddles+Service.swift"; sourceTree = "<group>"; };
+		957D0F2A29B4EC660099444D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		95C41F1E29B26F5A0095E43F /* GPTPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPTPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C41F2129B26F5A0095E43F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95C41F2529B26F5C0095E43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 		95C41F1529B26F5A0095E43F = {
 			isa = PBXGroup;
 			children = (
-				957D0F2729B4BA830099444D /* GPTSwift */,
 				9564D0D329B285D600F45768 /* Services */,
 				95C41F2029B26F5A0095E43F /* GPTPlayground */,
 				9564D0E029B3429200F45768 /* Resources */,
@@ -166,6 +165,7 @@
 		95C41F2029B26F5A0095E43F /* GPTPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				957D0F2A29B4EC660099444D /* Info.plist */,
 				95C41F2129B26F5A0095E43F /* App.swift */,
 				957D0F2829B4BB8E0099444D /* Puddles+Service.swift */,
 				95D21EA829B27D6A00D53378 /* Providers */,
@@ -524,7 +524,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "GPT Playground";
+				INFOPLIST_FILE = GPTPlayground/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -563,7 +563,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "GPT Playground";
+				INFOPLIST_FILE = GPTPlayground/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -633,7 +633,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftedMind/GPTSwift";
 			requirement = {
-				branch = main;
+				branch = develop;
 				kind = branch;
 			};
 		};

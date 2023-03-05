@@ -24,9 +24,16 @@ import SwiftUI
 
 public class MockBasicPromptService: BasicPromptService {
 
-    public func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> String {
-        try await Task.sleep(for: .seconds(2))
-        return "Space Exploration Technologies Corp. is an American spacecraft manufacturer, launcher, and a satellite communications corporation headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk with the stated goal of reducing space transportation costs to enable the colonization of Mars."
+    public func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> AsyncThrowingStream<String, Error> {
+        AsyncThrowingStream { continuation in
+            Task {
+                for word in answer.split(separator: " ") {
+                    continuation.yield(String(word) + " ")
+                    try await Task.sleep(for: .milliseconds(Double.random(in: 200...600)))
+                }
+            }
+        }
     }
-
 }
+
+private let answer = "Space Exploration Technologies Corp. is an American spacecraft manufacturer, launcher, and a satellite communications corporation headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk with the stated goal of reducing space transportation costs to enable the colonization of Mars."

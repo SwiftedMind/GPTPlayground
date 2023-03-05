@@ -23,7 +23,7 @@
 import SwiftUI
 
 public protocol BasicPromptService {
-    func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> String
+    func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> AsyncThrowingStream<String, Error>
 }
 
 public enum BasicPromptServiceError: Error {

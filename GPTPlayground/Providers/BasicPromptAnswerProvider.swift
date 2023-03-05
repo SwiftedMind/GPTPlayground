@@ -57,9 +57,18 @@ struct BasicPromptAnswerProvider: View {
             let answer = BasicPromptView.Answer(prompt: prompt, value: .loading)
             do {
                 answers.insert(answer, at: 0)
-                let value = try await service.send(prompt, previousConversation: previousConversation)
-                previousConversation.insert((prompt, value), at: 0)
-                answers[id: answer.id]?.value = .loaded(value)
+                var fullAnswer = ""
+                for try await word in try await service.send(prompt, previousConversation: previousConversation) {
+                    fullAnswer += word
+                    answers[id: answer.id]?.value = .loaded(fullAnswer)
+                }
+
+                if answers[id: answer.id]?.value.isLoading == true {
+                    answers[id: answer.id]?.value = .failure(.mock)
+                    return
+                }
+
+                previousConversation.insert((prompt, fullAnswer), at: 0)
             } catch {
                 answers[id: answer.id]?.value = .failure(error)
                 print("An error occurred: \(error.localizedDescription)")
@@ -80,42 +89,4 @@ struct BasicPromptAnswerProvider: View {
         previousConversation.removeFirst()
         answers.removeFirst()
     }
-}
-
-@MainActor
-final class _BasicPromptAnswerProvider: IndependentProvider {
-    var service: BasicPromptService = .live
-
-    @Published var answers: IdentifiedArrayOf<BasicPromptView.Answer> = []
-    private var previousConversation: [(question: String, answer: String)] = []
-
-    func commit(_ prompt: String) {
-        Task {
-            let answer = BasicPromptView.Answer(prompt: prompt, value: .loading)
-            do {
-                answers.insert(answer, at: 0)
-                let value = try await service.send(prompt, previousConversation: previousConversation)
-                previousConversation.insert((prompt, value), at: 0)
-                answers[id: answer.id]?.value = .loaded(value)
-            } catch {
-                answers[id: answer.id]?.value = .failure(error)
-                print("An error occurred: \(error.localizedDescription)")
-            }
-        }
-    }
-
-    func deleteAnswers(atOffsets indexSet: IndexSet) {
-        answers.remove(atOffsets: indexSet)
-    }
-
-    func reset() {
-        previousConversation.removeAll()
-        answers.removeAll()
-    }
-
-    func undo() {
-        previousConversation.removeFirst()
-        answers.removeFirst()
-    }
-
 }

@@ -41,7 +41,7 @@ struct BasicPromptView: View {
         .safeAreaInset(edge: .bottom) {
             submitButton
         }
-        .scrollDismissesKeyboard(.interactively)
+        .scrollDismissesKeyboard(.immediately)
     }
 
     @ViewBuilder @MainActor
@@ -67,7 +67,6 @@ struct BasicPromptView: View {
 
     @ViewBuilder @MainActor
     private var answerSection: some View {
-
         if state.answers.isEmpty {
             Text(Localized.BasicPrompt.description.string)
                 .font(.caption)
@@ -84,7 +83,7 @@ struct BasicPromptView: View {
                             ProgressView()
                                 .padding(.vertical, 5)
                         case .failure(let error):
-                            Text("Something went wrong:\n\(error.localizedDescription)")
+                            Text(verbatim: "Something went wrong:\n\(error)")
                                 .foregroundColor(.red)
                         case let .loaded(value):
                             Text(value)
