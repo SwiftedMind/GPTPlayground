@@ -52,6 +52,7 @@
 		9504B91F29B36A8E00B0B516 /* AttributedString+HighlightCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+HighlightCode.swift"; sourceTree = "<group>"; };
 		9504B92329B3781A00B0B516 /* CodeWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriter.swift; sourceTree = "<group>"; };
 		9504B92529B382B700B0B516 /* CodeWriterAnswerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriterAnswerProvider.swift; sourceTree = "<group>"; };
+		9527114429B522A800205908 /* GPTSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPTSwift; path = ../GPTSwift; sourceTree = "<group>"; };
 		953280BB29B357700038495A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPromptAnswerProvider.swift; sourceTree = "<group>"; };
 		9564D0D329B285D600F45768 /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Services; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		95C41F1529B26F5A0095E43F = {
 			isa = PBXGroup;
 			children = (
+				9527114429B522A800205908 /* GPTSwift */,
 				9564D0D329B285D600F45768 /* Services */,
 				95C41F2029B26F5A0095E43F /* GPTPlayground */,
 				9564D0E029B3429200F45768 /* Resources */,
@@ -525,6 +527,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GPTPlayground/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -564,6 +567,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GPTPlayground/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

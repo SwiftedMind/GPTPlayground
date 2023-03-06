@@ -16,7 +16,7 @@ public enum Localized {
   public enum BasicPrompt {
     /// The API is instructed to answer in a concise and factual manner, without adding any "fluff" or unnecessary extras.\n\nYou can copy answers by long pressing.
     public static let description = LocalizedString(lookupKey: "basic-prompt.description")
-    /// What do do you want to ask GPT?
+    /// What do do you want to ask the AI?
     public static let headline = LocalizedString(lookupKey: "basic-prompt.headline")
     /// Basic Prompt
     public static let title = LocalizedString(lookupKey: "basic-prompt.title")

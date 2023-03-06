@@ -13,7 +13,7 @@
 
 // MARK: - Basic Prompt
 "basic-prompt.title" = "Basic Prompt";
-"basic-prompt.headline" = "What do do you want to ask GPT?";
+"basic-prompt.headline" = "What do do you want to ask the AI?";
 "basic-prompt.description" = "The API is instructed to answer in a concise and factual manner, without adding any \"fluff\" or unnecessary extras.\n\nYou can copy answers by long pressing.";
 "basic-prompt.submit-button.title" = "Submit Prompt";
 
