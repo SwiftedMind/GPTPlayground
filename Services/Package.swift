@@ -12,7 +12,7 @@ let package = Package(
             targets: ["BasicPromptService", "CodeWriterService", "KeysReader"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/SwiftedMind/GPTSwift", branch: "develop")
+        .package(url: "https://github.com/SwiftedMind/GPTSwift", from: "2.0.0")
     ],
     targets: [
         .target(

@@ -15,6 +15,7 @@
 		9504B92C29B48A9900B0B516 /* PreviewDebugTools in Frameworks */ = {isa = PBXBuildFile; productRef = 9504B92B29B48A9900B0B516 /* PreviewDebugTools */; };
 		9504B92E29B48A9900B0B516 /* Puddles in Frameworks */ = {isa = PBXBuildFile; productRef = 9504B92D29B48A9900B0B516 /* Puddles */; };
 		953280BC29B357700038495A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953280BB29B357700038495A /* Color.swift */; };
+		9545823F29BFA528001CB657 /* GPTSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9545823E29BFA528001CB657 /* GPTSwift */; };
 		9564D0CA29B280F700F45768 /* BasicPromptAnswerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */; };
 		9564D0D529B2861A00F45768 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = 9564D0D429B2861A00F45768 /* Services */; };
 		9564D0D729B2880100F45768 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9564D0D629B2880100F45768 /* Keys.plist */; };
@@ -52,7 +53,6 @@
 		9504B91F29B36A8E00B0B516 /* AttributedString+HighlightCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+HighlightCode.swift"; sourceTree = "<group>"; };
 		9504B92329B3781A00B0B516 /* CodeWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriter.swift; sourceTree = "<group>"; };
 		9504B92529B382B700B0B516 /* CodeWriterAnswerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriterAnswerProvider.swift; sourceTree = "<group>"; };
-		9527114429B522A800205908 /* GPTSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPTSwift; path = ../GPTSwift; sourceTree = "<group>"; };
 		953280BB29B357700038495A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPromptAnswerProvider.swift; sourceTree = "<group>"; };
 		9564D0D329B285D600F45768 /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Services; sourceTree = "<group>"; };
@@ -70,7 +70,6 @@
 		9564D0F129B3460200F45768 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		957D0F2829B4BB8E0099444D /* Puddles+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puddles+Service.swift"; sourceTree = "<group>"; };
 		957D0F2A29B4EC660099444D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		95881F6229BBAB75001B976D /* Puddles */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Puddles; path = ../Puddles; sourceTree = "<group>"; };
 		95C41F1E29B26F5A0095E43F /* ExploreAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExploreAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C41F2129B26F5A0095E43F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95C41F2529B26F5C0095E43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 				9504B92C29B48A9900B0B516 /* PreviewDebugTools in Frameworks */,
 				9504B92E29B48A9900B0B516 /* Puddles in Frameworks */,
 				9564D0D529B2861A00F45768 /* Services in Frameworks */,
+				9545823F29BFA528001CB657 /* GPTSwift in Frameworks */,
 				9504B91C29B3672B00B0B516 /* Highlightr in Frameworks */,
 				95C41F5329B276810095E43F /* IdentifiedCollections in Frameworks */,
 				95C41F5029B276710095E43F /* Fakery in Frameworks */,
@@ -167,8 +167,6 @@
 		95C41F1529B26F5A0095E43F = {
 			isa = PBXGroup;
 			children = (
-				95881F6229BBAB75001B976D /* Puddles */,
-				9527114429B522A800205908 /* GPTSwift */,
 				9564D0D329B285D600F45768 /* Services */,
 				95C41F2029B26F5A0095E43F /* ExploreAI */,
 				9564D0E029B3429200F45768 /* Resources */,
@@ -293,6 +291,7 @@
 				9504B91B29B3672B00B0B516 /* Highlightr */,
 				9504B92B29B48A9900B0B516 /* PreviewDebugTools */,
 				9504B92D29B48A9900B0B516 /* Puddles */,
+				9545823E29BFA528001CB657 /* GPTSwift */,
 			);
 			productName = ExploreAI;
 			productReference = 95C41F1E29B26F5A0095E43F /* ExploreAI.app */;
@@ -327,7 +326,7 @@
 				95C41F5129B276810095E43F /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
 				9504B91A29B3672B00B0B516 /* XCRemoteSwiftPackageReference "Highlightr" */,
 				9504B92A29B48A9900B0B516 /* XCRemoteSwiftPackageReference "Puddles" */,
-				957D0F0629B48B740099444D /* XCRemoteSwiftPackageReference "GPTSwift" */,
+				9545823D29BFA528001CB657 /* XCRemoteSwiftPackageReference "GPTSwift" */,
 			);
 			productRefGroup = 95C41F1F29B26F5A0095E43F /* Products */;
 			projectDirPath = "";
@@ -643,16 +642,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HavingThought/Puddles";
 			requirement = {
-				branch = main;
+				branch = "unify-coordinator-and-provider";
 				kind = branch;
 			};
 		};
-		957D0F0629B48B740099444D /* XCRemoteSwiftPackageReference "GPTSwift" */ = {
+		9545823D29BFA528001CB657 /* XCRemoteSwiftPackageReference "GPTSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftedMind/GPTSwift";
 			requirement = {
-				branch = develop;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 		95C41F4E29B276710095E43F /* XCRemoteSwiftPackageReference "Fakery" */ = {
@@ -688,6 +687,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9504B92A29B48A9900B0B516 /* XCRemoteSwiftPackageReference "Puddles" */;
 			productName = Puddles;
+		};
+		9545823E29BFA528001CB657 /* GPTSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9545823D29BFA528001CB657 /* XCRemoteSwiftPackageReference "GPTSwift" */;
+			productName = GPTSwift;
 		};
 		9564D0D429B2861A00F45768 /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
