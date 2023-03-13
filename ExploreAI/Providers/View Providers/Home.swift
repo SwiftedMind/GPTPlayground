@@ -22,49 +22,35 @@
 
 import SwiftUI
 import Puddles
-import PreviewDebugTools
 
-struct HomeView: View {
-    
+struct Home: Provider {
+
     var interface: Interface<Action>
-    var state: ViewState
-    
-    var body: some View {
-        List {
-            Section {
-                DisclosureButton(title: Localized.BasicPrompt.title.string) {
-                    interface.sendAction(.didTapBasicPrompt)
-                }
-                DisclosureButton(title: Localized.CodeWriter.title.string) {
-                    interface.sendAction(.didTapCodeWriter)
-                }
-            }
+
+    var entryView: some View {
+        HomeView(
+            interface: .consume(handleViewInterface),
+            state: .init(
+
+            )
+        )
+        .navigationTitle("Home")
+    }
+
+    @MainActor
+    private func handleViewInterface(_ action: HomeView.Action) {
+        switch action {
+        case .didTapBasicPrompt:
+            interface.sendAction(.didTapBasicPrompt)
+        case .didTapCodeWriter:
+            interface.sendAction(.didTapCodeWriter)
         }
     }
 }
 
-extension HomeView {
-    struct ViewState {
-        
-        static var mock: Self {
-            .init()
-        }
-    }
-    
+extension Home {
     enum Action {
         case didTapBasicPrompt
         case didTapCodeWriter
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            Preview(HomeView.init, state: .mock) { action, $state in
-
-            }
-            .navigationTitle("Home")
-        }
-        .preferredColorScheme(.dark)
     }
 }

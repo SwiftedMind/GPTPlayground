@@ -50,7 +50,7 @@ struct RegularRootNavigator: Navigator {
         case .basicPrompt:
             BasicPromptAnswerProvider()
         case .codeWriter:
-            CodeWriterAnswerProvider(interface: .handled(by: handleCodeWriterInterface))
+            CodeWriterAnswerProvider(interface: .consume(handleCodeWriterInterface))
         }
     }
     

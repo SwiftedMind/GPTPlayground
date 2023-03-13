@@ -20,20 +20,20 @@
 //  SOFTWARE.
 //
 
-import Puddles
 import SwiftUI
+import Puddles
 import IdentifiedCollections
 import BasicPromptService
 
-struct BasicPromptAnswerProvider: View {
+struct BasicPromptAnswerProvider: Provider {
     @Service private var service: BasicPromptService = .live
 
     @State private var answers: IdentifiedArrayOf<BasicPromptView.Answer> = []
     @State private var previousConversation: [(question: String, answer: String)] = []
 
-    var body: some View {
+    var entryView: some View {
         BasicPrompt(
-            providerInterface: .handled(by: handleProviderInterface),
+            providerInterface: .consume(handleProviderInterface),
             answers: answers
         )
     }

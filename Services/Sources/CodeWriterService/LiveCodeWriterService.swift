@@ -27,7 +27,7 @@ import RegexBuilder
 
 public class LiveCodeWriterService: CodeWriterService {
 
-    private lazy var gptSwift = GPTSwift(apiKey: KeysReader.shared.openAIKey)
+    private lazy var gptSwift = ChatGPTSwift(apiKey: KeysReader.shared.openAIKey)
 
     public func send(_ prompt: String, currentCode: String?) async throws -> String {
 
@@ -46,7 +46,7 @@ I want you to act as a code editor, helping me build a block of code. I will typ
             messages.append(.init(role: .assistant, content: currentCode))
         }
 
-        let answer = try await gptSwift.askChatGPT(messages: messages)
+        let answer = try await gptSwift.ask(messages: messages)
         let codeCapture = Reference(Substring.self)
         let regex = Regex {
             Optionally {

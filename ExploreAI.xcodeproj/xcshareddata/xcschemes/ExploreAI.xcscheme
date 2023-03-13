@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "95C41F1D29B26F5A0095E43F"
-               BuildableName = "GPTPlayground.app"
-               BlueprintName = "GPTPlayground"
-               ReferencedContainer = "container:GPTPlayground.xcodeproj">
+               BuildableName = "ExploreAI.app"
+               BlueprintName = "ExploreAI"
+               ReferencedContainer = "container:ExploreAI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "95C41F1D29B26F5A0095E43F"
-            BuildableName = "GPTPlayground.app"
-            BlueprintName = "GPTPlayground"
-            ReferencedContainer = "container:GPTPlayground.xcodeproj">
+            BuildableName = "ExploreAI.app"
+            BlueprintName = "ExploreAI"
+            ReferencedContainer = "container:ExploreAI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "95C41F1D29B26F5A0095E43F"
-            BuildableName = "GPTPlayground.app"
-            BlueprintName = "GPTPlayground"
-            ReferencedContainer = "container:GPTPlayground.xcodeproj">
+            BuildableName = "ExploreAI.app"
+            BlueprintName = "ExploreAI"
+            ReferencedContainer = "container:ExploreAI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -20,47 +20,39 @@
 //  SOFTWARE.
 //
 
-import Puddles
 import SwiftUI
+import Puddles
 import IdentifiedCollections
 
-struct CodeWriter: Coordinator {
-    @Environment(\.colorScheme) private var colorScheme
+struct BasicPrompt: Provider {
 
     @State private var prompt: String = ""
-    @State private var attributedCode: AttributedString = ""
-    var interface: Interface<Action>
+
     var providerInterface: Interface<ProviderAction>
-    var code: String = ""
-    var isLoading: Bool = false
+    var answers: IdentifiedArrayOf<BasicPromptView.Answer>
 
     var entryView: some View {
-        CodeWriterView(
-            interface: .handled(by: handleViewInterface),
+        BasicPromptView(
+            interface: .consume(handleViewInterface),
             state: .init(
                 prompt: prompt,
-                code: attributedCode,
-                isLoading: isLoading
+                answers: answers
             )
         )
-        .onChange(of: code) { newValue in
-            attributedCode = newValue.highlightAsCode(colorScheme: colorScheme) ?? "ERROR"
-        }
-        .navigationTitle(Localized.CodeWriter.title.string)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Basic Prompt")
         .toolbar { toolbarContent }
     }
 
-    // MARK: - Interface Handler
-
     @MainActor
-    private func handleViewInterface(_ action: CodeWriterView.Action) {
+    private func handleViewInterface(_ action: BasicPromptView.Action) {
         switch action {
         case .didChangePrompt(let newValue):
             prompt = newValue
-        case .didTapSubmit:
+        case .didCommit:
             providerInterface.sendAction(.commit(prompt: prompt))
             prompt = ""
+        case .didDeleteAnswers(let indexSet):
+            providerInterface.sendAction(.deleteAnswers(offsets: indexSet))
         }
     }
 
@@ -68,36 +60,32 @@ struct CodeWriter: Coordinator {
 
     @ToolbarContentBuilder @MainActor
     private var toolbarContent: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-                UIPasteboard.general.string = code
-            } label: {
-                Image(systemName: "doc.on.doc")
-            }
-        }
         ToolbarItemGroup(placement: .primaryAction) {
             Button {
                 providerInterface.sendAction(.undo)
             } label: {
                 Image(systemName: "arrow.uturn.backward.circle")
             }
+            .disabled(answers.isEmpty)
             Button {
                 providerInterface.sendAction(.reset)
             } label: {
                 Image(systemName: "xmark.circle")
             }
+            .disabled(answers.isEmpty)
         }
     }
 }
 
-extension CodeWriter {
-    enum Action: Hashable {
-        case noAction
+extension BasicPrompt {
+    enum Action {
+        case didTapBasicPrompt
     }
 
     enum ProviderAction: Hashable {
         case commit(prompt: String)
         case undo
         case reset
+        case deleteAnswers(offsets: IndexSet)
     }
 }

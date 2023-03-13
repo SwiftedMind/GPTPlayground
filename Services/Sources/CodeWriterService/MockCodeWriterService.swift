@@ -34,13 +34,13 @@ private let code = """
 import SwiftUI
 import Puddles
 
-struct Home: Coordinator {
+struct Home: Provider {
 
     var interface: Interface<Action>
 
     var entryView: some View {
         HomeView(
-            interface: .handled(by: handleViewInterface),
+            interface: .consume(handleViewInterface),
             state: .init(
 
             )

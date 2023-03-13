@@ -70,10 +70,11 @@
 		9564D0F129B3460200F45768 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		957D0F2829B4BB8E0099444D /* Puddles+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puddles+Service.swift"; sourceTree = "<group>"; };
 		957D0F2A29B4EC660099444D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		95C41F1E29B26F5A0095E43F /* GPTPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPTPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95881F6229BBAB75001B976D /* Puddles */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Puddles; path = ../Puddles; sourceTree = "<group>"; };
+		95C41F1E29B26F5A0095E43F /* ExploreAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExploreAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C41F2129B26F5A0095E43F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95C41F2529B26F5C0095E43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		95C41F2729B26F5C0095E43F /* GPTPlayground.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPTPlayground.entitlements; sourceTree = "<group>"; };
+		95C41F2729B26F5C0095E43F /* ExploreAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExploreAI.entitlements; sourceTree = "<group>"; };
 		95C41F2929B26F5C0095E43F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		95C41F3E29B2708C0095E43F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		95C41F4329B271540095E43F /* DisclosureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureButton.swift; sourceTree = "<group>"; };
@@ -143,12 +144,33 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		95881F6329BBAC77001B976D /* View Providers */ = {
+			isa = PBXGroup;
+			children = (
+				95C41F5629B27BC10095E43F /* Home.swift */,
+				9564D0D829B3360100F45768 /* Sidebar.swift */,
+				95D21EA629B27CD700D53378 /* BasicPrompt.swift */,
+				9504B92329B3781A00B0B516 /* CodeWriter.swift */,
+			);
+			path = "View Providers";
+			sourceTree = "<group>";
+		};
+		95881F6429BBAC7D001B976D /* Data Providers */ = {
+			isa = PBXGroup;
+			children = (
+				9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */,
+				9504B92529B382B700B0B516 /* CodeWriterAnswerProvider.swift */,
+			);
+			path = "Data Providers";
+			sourceTree = "<group>";
+		};
 		95C41F1529B26F5A0095E43F = {
 			isa = PBXGroup;
 			children = (
+				95881F6229BBAB75001B976D /* Puddles */,
 				9527114429B522A800205908 /* GPTSwift */,
 				9564D0D329B285D600F45768 /* Services */,
-				95C41F2029B26F5A0095E43F /* GPTPlayground */,
+				95C41F2029B26F5A0095E43F /* ExploreAI */,
 				9564D0E029B3429200F45768 /* Resources */,
 				9564D0EE29B3432700F45768 /* Generated */,
 				95C41F1F29B26F5A0095E43F /* Products */,
@@ -159,26 +181,25 @@
 		95C41F1F29B26F5A0095E43F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				95C41F1E29B26F5A0095E43F /* GPTPlayground.app */,
+				95C41F1E29B26F5A0095E43F /* ExploreAI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		95C41F2029B26F5A0095E43F /* GPTPlayground */ = {
+		95C41F2029B26F5A0095E43F /* ExploreAI */ = {
 			isa = PBXGroup;
 			children = (
 				957D0F2A29B4EC660099444D /* Info.plist */,
 				95C41F2129B26F5A0095E43F /* App.swift */,
 				957D0F2829B4BB8E0099444D /* Puddles+Service.swift */,
-				95D21EA829B27D6A00D53378 /* Providers */,
 				95C41F3929B270460095E43F /* Navigators */,
-				95C41F3A29B2704C0095E43F /* Coordinators */,
+				95C41F3A29B2704C0095E43F /* Providers */,
 				95C41F3B29B270500095E43F /* Views */,
-				95C41F2729B26F5C0095E43F /* GPTPlayground.entitlements */,
+				95C41F2729B26F5C0095E43F /* ExploreAI.entitlements */,
 				95C41F4729B276560095E43F /* Helpers */,
 				95C41F2829B26F5C0095E43F /* Preview Content */,
 			);
-			path = GPTPlayground;
+			path = ExploreAI;
 			sourceTree = "<group>";
 		};
 		95C41F2829B26F5C0095E43F /* Preview Content */ = {
@@ -206,15 +227,13 @@
 			path = Navigators;
 			sourceTree = "<group>";
 		};
-		95C41F3A29B2704C0095E43F /* Coordinators */ = {
+		95C41F3A29B2704C0095E43F /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				95C41F5629B27BC10095E43F /* Home.swift */,
-				9564D0D829B3360100F45768 /* Sidebar.swift */,
-				95D21EA629B27CD700D53378 /* BasicPrompt.swift */,
-				9504B92329B3781A00B0B516 /* CodeWriter.swift */,
+				95881F6429BBAC7D001B976D /* Data Providers */,
+				95881F6329BBAC77001B976D /* View Providers */,
 			);
-			path = Coordinators;
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		95C41F3B29B270500095E43F /* Views */ = {
@@ -250,21 +269,12 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		95D21EA829B27D6A00D53378 /* Providers */ = {
-			isa = PBXGroup;
-			children = (
-				9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */,
-				9504B92529B382B700B0B516 /* CodeWriterAnswerProvider.swift */,
-			);
-			path = Providers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		95C41F1D29B26F5A0095E43F /* GPTPlayground */ = {
+		95C41F1D29B26F5A0095E43F /* ExploreAI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 95C41F2D29B26F5C0095E43F /* Build configuration list for PBXNativeTarget "GPTPlayground" */;
+			buildConfigurationList = 95C41F2D29B26F5C0095E43F /* Build configuration list for PBXNativeTarget "ExploreAI" */;
 			buildPhases = (
 				9564D0E829B342EA00F45768 /* SwiftGen */,
 				95C41F1A29B26F5A0095E43F /* Sources */,
@@ -275,7 +285,7 @@
 			);
 			dependencies = (
 			);
-			name = GPTPlayground;
+			name = ExploreAI;
 			packageProductDependencies = (
 				95C41F4F29B276710095E43F /* Fakery */,
 				95C41F5229B276810095E43F /* IdentifiedCollections */,
@@ -284,8 +294,8 @@
 				9504B92B29B48A9900B0B516 /* PreviewDebugTools */,
 				9504B92D29B48A9900B0B516 /* Puddles */,
 			);
-			productName = GPTPlayground;
-			productReference = 95C41F1E29B26F5A0095E43F /* GPTPlayground.app */;
+			productName = ExploreAI;
+			productReference = 95C41F1E29B26F5A0095E43F /* ExploreAI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -303,7 +313,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 95C41F1929B26F5A0095E43F /* Build configuration list for PBXProject "GPTPlayground" */;
+			buildConfigurationList = 95C41F1929B26F5A0095E43F /* Build configuration list for PBXProject "ExploreAI" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -323,7 +333,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				95C41F1D29B26F5A0095E43F /* GPTPlayground */,
+				95C41F1D29B26F5A0095E43F /* ExploreAI */,
 			);
 		};
 /* End PBXProject section */
@@ -518,16 +528,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GPTPlayground/GPTPlayground.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExploreAI/ExploreAI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GPTPlayground/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ExploreAI/Preview Content\"";
 				DEVELOPMENT_TEAM = 7F6BJZY5B3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GPTPlayground/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_FILE = ExploreAI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Explore AI";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -543,10 +553,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swiftedMind.GPTPlayground;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftedMind.ExploreAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -558,16 +570,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GPTPlayground/GPTPlayground.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExploreAI/ExploreAI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GPTPlayground/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ExploreAI/Preview Content\"";
 				DEVELOPMENT_TEAM = 7F6BJZY5B3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GPTPlayground/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_FILE = ExploreAI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Explore AI";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -583,10 +595,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swiftedMind.GPTPlayground;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftedMind.ExploreAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -596,7 +610,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		95C41F1929B26F5A0095E43F /* Build configuration list for PBXProject "GPTPlayground" */ = {
+		95C41F1929B26F5A0095E43F /* Build configuration list for PBXProject "ExploreAI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				95C41F2B29B26F5C0095E43F /* Debug */,
@@ -605,7 +619,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95C41F2D29B26F5C0095E43F /* Build configuration list for PBXNativeTarget "GPTPlayground" */ = {
+		95C41F2D29B26F5C0095E43F /* Build configuration list for PBXNativeTarget "ExploreAI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				95C41F2E29B26F5C0095E43F /* Debug */,

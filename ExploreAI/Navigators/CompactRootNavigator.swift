@@ -31,7 +31,7 @@ struct CompactRootNavigator: Navigator {
 
     var root: some View {
         NavigationStack(path: $path) {
-            Home(interface: .handled(by: handleHomeInterface))
+            Home(interface: .consume(handleHomeInterface))
                 .navigationDestination(for: Path.self) { path in
                     destination(for: path)
                 }
@@ -44,7 +44,7 @@ struct CompactRootNavigator: Navigator {
         case .basicPrompt:
             BasicPromptAnswerProvider()
         case .codeWriter:
-            CodeWriterAnswerProvider(interface: .handled(by: handleCodeWriterInterface))
+            CodeWriterAnswerProvider(interface: .consume(handleCodeWriterInterface))
         }
     }
 

@@ -24,13 +24,13 @@ import Puddles
 import SwiftUI
 import IdentifiedCollections
 
-struct Sidebar: Coordinator {
+struct Sidebar: Provider {
 
     @Binding var selection: Panel?
 
     var entryView: some View {
         SidebarView(
-            interface: .handled(by: handleViewInterface),
+            interface: .consume(handleViewInterface),
             state: .init(
                 selection: selection
             )

@@ -23,7 +23,7 @@
 import SwiftUI
 
 @main
-struct GPTPlaygroundApp: App {
+struct PlaygroundApp: App {
     var body: some Scene {
         WindowGroup {
             RootNavigator()

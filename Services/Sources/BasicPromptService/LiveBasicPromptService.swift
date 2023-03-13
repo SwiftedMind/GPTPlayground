@@ -26,12 +26,18 @@ import KeysReader
 
 public class LiveBasicPromptService: BasicPromptService {
 
-    private lazy var gptSwift = GPTSwift(apiKey: KeysReader.shared.openAIKey)
+    private lazy var gptSwift = ChatGPTSwift(apiKey: KeysReader.shared.openAIKey)
 
     public func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> AsyncThrowingStream<String, Error> {
+
+        var answer = ""
+        for try await nextWord in try await gptSwift.streamedAnswer.ask("Tell me a story about birds") {
+            answer += nextWord
+        }
+
         let instructionMessage = ChatMessage(role: .system, content: "I want you to be a helpful, generic chat companion. Answer concise and focused, do not add any personal flavor. Stay topical and only answer the question.")
         let pastConversationMessages = previousConversation.flatMap { [ChatMessage(role: .user, content: $0.question), ChatMessage(role: .assistant, content: $0.answer)] }
         let newPromptMessage = ChatMessage(role: .user, content: prompt)
-        return try await gptSwift.streamedAnswer.askChatGPT(messages: [instructionMessage] + pastConversationMessages + [newPromptMessage])
+        return try await gptSwift.streamedAnswer.ask(messages: [instructionMessage] + pastConversationMessages + [newPromptMessage])
     }
 }

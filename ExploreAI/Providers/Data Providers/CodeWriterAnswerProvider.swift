@@ -20,12 +20,12 @@
 //  SOFTWARE.
 //
 
-import Puddles
 import SwiftUI
+import Puddles
 import IdentifiedCollections
 import CodeWriterService
 
-struct CodeWriterAnswerProvider: View {
+struct CodeWriterAnswerProvider: Provider {
     @Service private var service: CodeWriterService = .live
     @State private var generatedCode: String = ""
     @State private var previousGeneratedCodes: [String] = []
@@ -33,14 +33,16 @@ struct CodeWriterAnswerProvider: View {
 
     var interface: Interface<CodeWriter.Action>
 
-    var body: some View {
+    var entryView: some View {
         CodeWriter(
-            interface: .handled(by: .handled(by: interface)),
-            providerInterface: .handled(by: handleProviderInterface),
+            interface: .forward(to: interface),
+            providerInterface: .consume(handleProviderInterface),
             code: generatedCode,
             isLoading: isLoading
         )
     }
+
+    // MARK: - Interface Handler
 
     @MainActor
     private func handleProviderInterface(_ action: CodeWriter.ProviderAction) {

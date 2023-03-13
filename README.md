@@ -1,6 +1,6 @@
-# GPTPlayground
+# ExploreAI
 
-GPTPlayground is an app that I use as a playground to build AI stuff with OpenAI's API. 
+ExploreAI is an app that I use as a playground to build AI stuff with OpenAI's API. 
 It is using a Swift package I am building: [GPTSwift](https://github.com/SwiftedMind/GPTSwift).
 
 Feel free to use this app as an inspiration.
