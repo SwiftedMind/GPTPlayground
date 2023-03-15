@@ -21,12 +21,12 @@
 //
 
 import SwiftUI
-import GPTSwift
+import ChatGPT
 import KeysReader
 
 public class LiveBasicPromptService: BasicPromptService {
 
-    private lazy var gptSwift = ChatGPTSwift(apiKey: KeysReader.shared.openAIKey)
+    private lazy var gptSwift = ChatGPT(apiKey: KeysReader.shared.openAIKey)
 
     public func send(_ prompt: String, previousConversation: [(question: String, answer: String)]) async throws -> AsyncThrowingStream<String, Error> {
 

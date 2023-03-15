@@ -21,12 +21,23 @@
 //
 
 import SwiftUI
+import GPT
+import KeysReader
 
 @main
 struct PlaygroundApp: App {
     var body: some Scene {
         WindowGroup {
             RootNavigator()
+                .task {
+                    let gpt = GPT(apiKey: KeysReader.shared.openAIKey)
+                    do {
+                        let answer = try await gpt.complete("Hi, how are you?")
+                        dump(answer)
+                    } catch {
+                        print(error)
+                    }
+                }
         }
     }
 }

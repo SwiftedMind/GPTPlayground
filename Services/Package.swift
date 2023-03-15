@@ -12,27 +12,28 @@ let package = Package(
             targets: ["BasicPromptService", "CodeWriterService", "KeysReader"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/SwiftedMind/GPTSwift", from: "2.0.0")
+        .package(path: "../GPTSwift")
+        //        .package(url: "https://github.com/SwiftedMind/GPTSwift", from: "2.0.0")
     ],
     targets: [
         .target(
             name: "BasicPromptService",
             dependencies: [
-                "GPTSwift",
+                .product(name: "ChatGPT", package: "GPTSwift"),
                 "KeysReader"
             ]
         ),
         .target(
             name: "CodeWriterService",
             dependencies: [
-                "GPTSwift",
+                .product(name: "ChatGPT", package: "GPTSwift"),
                 "KeysReader"
             ]
         ),
         .target(
             name: "KeysReader",
             dependencies: [
-                "GPTSwift"
+                .product(name: "ChatGPT", package: "GPTSwift")
             ]
         )
     ]

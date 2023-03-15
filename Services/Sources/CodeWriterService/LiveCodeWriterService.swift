@@ -21,13 +21,13 @@
 //
 
 import SwiftUI
-import GPTSwift
+import ChatGPT
 import KeysReader
 import RegexBuilder
 
 public class LiveCodeWriterService: CodeWriterService {
 
-    private lazy var gptSwift = ChatGPTSwift(apiKey: KeysReader.shared.openAIKey)
+    private lazy var gptSwift = ChatGPT(apiKey: KeysReader.shared.openAIKey)
 
     public func send(_ prompt: String, currentCode: String?) async throws -> String {
 
