@@ -25,7 +25,7 @@ import Puddles
 import IdentifiedCollections
 import BasicPromptService
 
-struct BasicPromptAnswerProvider: Provider {
+private struct BasicPrompt_Managed: Provider {
     @Service private var service: BasicPromptService = .live
 
     @State private var answers: IdentifiedArrayOf<BasicPromptView.Answer> = []
@@ -33,13 +33,17 @@ struct BasicPromptAnswerProvider: Provider {
 
     var entryView: some View {
         BasicPrompt(
-            providerInterface: .consume(handleProviderInterface),
+            dataInterface: .consume(handleProviderInterface),
             answers: answers
         )
     }
 
+    func applyStateConfiguration(_ configuration: StateConfiguration) {
+        
+    }
+
     @MainActor
-    private func handleProviderInterface(_ action: BasicPrompt.ProviderAction) {
+    private func handleProviderInterface(_ action: BasicPrompt.DataAction) {
         switch action {
         case let .commit(prompt):
             commit(prompt)
@@ -88,5 +92,17 @@ struct BasicPromptAnswerProvider: Provider {
     private func undo() {
         previousConversation.removeFirst()
         answers.removeFirst()
+    }
+}
+
+extension BasicPrompt_Managed {
+    enum StateConfiguration {
+        case reset
+    }
+}
+
+extension BasicPrompt {
+    static func managed() -> some View {
+        BasicPrompt_Managed()
     }
 }

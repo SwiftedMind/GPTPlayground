@@ -28,7 +28,7 @@ struct BasicPrompt: Provider {
 
     @State private var prompt: String = ""
 
-    var providerInterface: Interface<ProviderAction>
+    var dataInterface: Interface<DataAction>
     var answers: IdentifiedArrayOf<BasicPromptView.Answer>
 
     var entryView: some View {
@@ -43,16 +43,20 @@ struct BasicPrompt: Provider {
         .toolbar { toolbarContent }
     }
 
+    func applyStateConfiguration(_ configuration: StateConfiguration) {
+
+    }
+
     @MainActor
     private func handleViewInterface(_ action: BasicPromptView.Action) {
         switch action {
         case .didChangePrompt(let newValue):
             prompt = newValue
         case .didCommit:
-            providerInterface.sendAction(.commit(prompt: prompt))
+            dataInterface.fire(.commit(prompt: prompt))
             prompt = ""
         case .didDeleteAnswers(let indexSet):
-            providerInterface.sendAction(.deleteAnswers(offsets: indexSet))
+            dataInterface.fire(.deleteAnswers(offsets: indexSet))
         }
     }
 
@@ -62,13 +66,13 @@ struct BasicPrompt: Provider {
     private var toolbarContent: some ToolbarContent {
         ToolbarItemGroup(placement: .primaryAction) {
             Button {
-                providerInterface.sendAction(.undo)
+                dataInterface.fire(.undo)
             } label: {
                 Image(systemName: "arrow.uturn.backward.circle")
             }
             .disabled(answers.isEmpty)
             Button {
-                providerInterface.sendAction(.reset)
+                dataInterface.fire(.reset)
             } label: {
                 Image(systemName: "xmark.circle")
             }
@@ -78,11 +82,16 @@ struct BasicPrompt: Provider {
 }
 
 extension BasicPrompt {
+
+    enum StateConfiguration {
+        case reset
+    }
+
     enum Action {
         case didTapBasicPrompt
     }
 
-    enum ProviderAction: Hashable {
+    enum DataAction: Hashable {
         case commit(prompt: String)
         case undo
         case reset

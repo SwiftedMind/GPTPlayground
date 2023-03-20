@@ -37,6 +37,10 @@ struct Sidebar: Provider {
         )
         .navigationTitle("Tools")
     }
+
+    func applyStateConfiguration(_ configuration: StateConfiguration) {
+
+    }
     
     @MainActor
     private func handleViewInterface(_ action: SidebarView.Action) {
@@ -44,5 +48,11 @@ struct Sidebar: Provider {
         case let .didChangeSelection(newValue):
             selection = newValue
         }
+    }
+}
+
+extension Sidebar {
+    enum StateConfiguration {
+        case reset
     }
 }

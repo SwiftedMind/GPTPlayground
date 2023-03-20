@@ -75,8 +75,7 @@ I want you to act as a code editor, helping me build a block of code. I will typ
             }
         }
 
-        if let value = answer.choices.first?.message.content,
-           let match = value.firstMatch(of: regex) {
+        if let match = answer.firstMatch(of: regex) {
             return String(match[codeCapture])
         }
 

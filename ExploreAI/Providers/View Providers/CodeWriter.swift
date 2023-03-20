@@ -30,7 +30,7 @@ struct CodeWriter: Provider {
     @State private var prompt: String = ""
     @State private var attributedCode: AttributedString = ""
     var interface: Interface<Action>
-    var providerInterface: Interface<ProviderAction>
+    var dataInterface: Interface<DataAction>
     var code: String = ""
     var isLoading: Bool = false
 
@@ -51,6 +51,10 @@ struct CodeWriter: Provider {
         .toolbar { toolbarContent }
     }
 
+    func applyStateConfiguration(_ configuration: StateConfiguration) {
+        
+    }
+
     // MARK: - Interface Handler
 
     @MainActor
@@ -59,7 +63,7 @@ struct CodeWriter: Provider {
         case .didChangePrompt(let newValue):
             prompt = newValue
         case .didTapSubmit:
-            providerInterface.sendAction(.commit(prompt: prompt))
+            dataInterface.fire(.commit(prompt: prompt))
             prompt = ""
         }
     }
@@ -77,12 +81,12 @@ struct CodeWriter: Provider {
         }
         ToolbarItemGroup(placement: .primaryAction) {
             Button {
-                providerInterface.sendAction(.undo)
+                dataInterface.fire(.undo)
             } label: {
                 Image(systemName: "arrow.uturn.backward.circle")
             }
             Button {
-                providerInterface.sendAction(.reset)
+                dataInterface.fire(.reset)
             } label: {
                 Image(systemName: "xmark.circle")
             }
@@ -91,11 +95,16 @@ struct CodeWriter: Provider {
 }
 
 extension CodeWriter {
+
+    enum StateConfiguration {
+        case reset
+    }
+
     enum Action: Hashable {
         case noAction
     }
 
-    enum ProviderAction: Hashable {
+    enum DataAction: Hashable {
         case commit(prompt: String)
         case undo
         case reset

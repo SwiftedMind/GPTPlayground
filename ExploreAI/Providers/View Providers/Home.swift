@@ -37,18 +37,27 @@ struct Home: Provider {
         .navigationTitle("Home")
     }
 
+    func applyStateConfiguration(_ configuration: StateConfiguration) {
+
+    }
+
     @MainActor
     private func handleViewInterface(_ action: HomeView.Action) {
         switch action {
         case .didTapBasicPrompt:
-            interface.sendAction(.didTapBasicPrompt)
+            interface.fire(.didTapBasicPrompt)
         case .didTapCodeWriter:
-            interface.sendAction(.didTapCodeWriter)
+            interface.fire(.didTapCodeWriter)
         }
     }
 }
 
 extension Home {
+
+    enum StateConfiguration {
+        case reset
+    }
+
     enum Action {
         case didTapBasicPrompt
         case didTapCodeWriter

@@ -58,7 +58,7 @@ struct BasicPromptView: View {
             .onSubmit {
                 isFocused = true
                 guard !state.prompt.isEmpty else { return }
-                interface.sendAction(.didCommit)
+                interface.fire(.didCommit)
             }
             .padding(5)
             .focused($isFocused)
@@ -92,7 +92,7 @@ struct BasicPromptView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .onDelete { interface.sendAction(.didDeleteAnswers($0)) }
+                .onDelete { interface.fire(.didDeleteAnswers($0)) }
             }
         }
     }
@@ -100,7 +100,7 @@ struct BasicPromptView: View {
     @ViewBuilder @MainActor
     private var submitButton: some View {
         Button {
-            interface.sendAction(.didCommit)
+            interface.fire(.didCommit)
         } label: {
             Text(Localized.CodeWriter.SubmitButton.title.string)
                 .padding(.vertical, 10)

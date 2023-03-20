@@ -48,9 +48,9 @@ struct RegularRootNavigator: Navigator {
         case .none:
             Text("Select a tool")
         case .basicPrompt:
-            BasicPromptAnswerProvider()
+            BasicPrompt.managed()
         case .codeWriter:
-            CodeWriterAnswerProvider(interface: .consume(handleCodeWriterInterface))
+            CodeWriter.managed(interface: .consume(handleCodeWriterInterface))
         }
     }
     

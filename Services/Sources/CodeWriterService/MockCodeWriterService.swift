@@ -52,9 +52,9 @@ struct Home: Provider {
     private func handleViewInterface(_ action: HomeView.Action) {
         switch action {
         case .didTapBasicPrompt:
-            interface.sendAction(.didTapBasicPrompt)
+            interface.fire(.didTapBasicPrompt)
         case .didTapCodeWriter:
-            interface.sendAction(.didTapCodeWriter)
+            interface.fire(.didTapCodeWriter)
         }
     }
 }

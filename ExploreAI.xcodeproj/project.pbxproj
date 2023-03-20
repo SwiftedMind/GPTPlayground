@@ -11,11 +11,11 @@
 		9504B91E29B3676B00B0B516 /* CodeWriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504B91D29B3676B00B0B516 /* CodeWriterView.swift */; };
 		9504B92029B36A8E00B0B516 /* AttributedString+HighlightCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504B91F29B36A8E00B0B516 /* AttributedString+HighlightCode.swift */; };
 		9504B92429B3781A00B0B516 /* CodeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504B92329B3781A00B0B516 /* CodeWriter.swift */; };
-		9504B92629B382B700B0B516 /* CodeWriterAnswerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504B92529B382B700B0B516 /* CodeWriterAnswerProvider.swift */; };
+		9504B92629B382B700B0B516 /* CodeWriter_Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504B92529B382B700B0B516 /* CodeWriter_Managed.swift */; };
 		9504B92C29B48A9900B0B516 /* PreviewDebugTools in Frameworks */ = {isa = PBXBuildFile; productRef = 9504B92B29B48A9900B0B516 /* PreviewDebugTools */; };
 		9504B92E29B48A9900B0B516 /* Puddles in Frameworks */ = {isa = PBXBuildFile; productRef = 9504B92D29B48A9900B0B516 /* Puddles */; };
 		953280BC29B357700038495A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953280BB29B357700038495A /* Color.swift */; };
-		9564D0CA29B280F700F45768 /* BasicPromptAnswerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */; };
+		9564D0CA29B280F700F45768 /* BasicPrompt_Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0C929B280F700F45768 /* BasicPrompt_Managed.swift */; };
 		9564D0D529B2861A00F45768 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = 9564D0D429B2861A00F45768 /* Services */; };
 		9564D0D729B2880100F45768 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9564D0D629B2880100F45768 /* Keys.plist */; };
 		9564D0D929B3360100F45768 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564D0D829B3360100F45768 /* Sidebar.swift */; };
@@ -32,6 +32,7 @@
 		9579EBDD29C0F474009AB8C9 /* ChatGPT in Frameworks */ = {isa = PBXBuildFile; productRef = 9579EBDC29C0F474009AB8C9 /* ChatGPT */; };
 		9579EBDF29C0F474009AB8C9 /* GPT in Frameworks */ = {isa = PBXBuildFile; productRef = 9579EBDE29C0F474009AB8C9 /* GPT */; };
 		957D0F2929B4BB8E0099444D /* Puddles+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D0F2829B4BB8E0099444D /* Puddles+Service.swift */; };
+		95868C6629C78ACF001F8629 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 95868C6529C78ACF001F8629 /* OpenAI */; };
 		95C41F2229B26F5A0095E43F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C41F2129B26F5A0095E43F /* App.swift */; };
 		95C41F2629B26F5C0095E43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C41F2529B26F5C0095E43F /* Assets.xcassets */; };
 		95C41F2A29B26F5C0095E43F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C41F2929B26F5C0095E43F /* Preview Assets.xcassets */; };
@@ -53,9 +54,9 @@
 		9504B91D29B3676B00B0B516 /* CodeWriterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriterView.swift; sourceTree = "<group>"; };
 		9504B91F29B36A8E00B0B516 /* AttributedString+HighlightCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+HighlightCode.swift"; sourceTree = "<group>"; };
 		9504B92329B3781A00B0B516 /* CodeWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriter.swift; sourceTree = "<group>"; };
-		9504B92529B382B700B0B516 /* CodeWriterAnswerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriterAnswerProvider.swift; sourceTree = "<group>"; };
+		9504B92529B382B700B0B516 /* CodeWriter_Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWriter_Managed.swift; sourceTree = "<group>"; };
 		953280BB29B357700038495A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPromptAnswerProvider.swift; sourceTree = "<group>"; };
+		9564D0C929B280F700F45768 /* BasicPrompt_Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPrompt_Managed.swift; sourceTree = "<group>"; };
 		9564D0D329B285D600F45768 /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Services; sourceTree = "<group>"; };
 		9564D0D629B2880100F45768 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		9564D0D829B3360100F45768 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		9579EBDB29C0F2F3009AB8C9 /* GPTSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPTSwift; path = ../GPTSwift; sourceTree = "<group>"; };
 		957D0F2829B4BB8E0099444D /* Puddles+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puddles+Service.swift"; sourceTree = "<group>"; };
 		957D0F2A29B4EC660099444D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		95868C6729C799A8001F8629 /* Puddles */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Puddles; path = ../Puddles; sourceTree = "<group>"; };
 		95C41F1E29B26F5A0095E43F /* ExploreAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExploreAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C41F2129B26F5A0095E43F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95C41F2529B26F5C0095E43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				9504B91C29B3672B00B0B516 /* Highlightr in Frameworks */,
 				95C41F5329B276810095E43F /* IdentifiedCollections in Frameworks */,
 				9579EBDF29C0F474009AB8C9 /* GPT in Frameworks */,
+				95868C6629C78ACF001F8629 /* OpenAI in Frameworks */,
 				95C41F5029B276710095E43F /* Fakery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,8 +164,8 @@
 		95881F6429BBAC7D001B976D /* Data Providers */ = {
 			isa = PBXGroup;
 			children = (
-				9564D0C929B280F700F45768 /* BasicPromptAnswerProvider.swift */,
-				9504B92529B382B700B0B516 /* CodeWriterAnswerProvider.swift */,
+				9564D0C929B280F700F45768 /* BasicPrompt_Managed.swift */,
+				9504B92529B382B700B0B516 /* CodeWriter_Managed.swift */,
 			);
 			path = "Data Providers";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 		95C41F1529B26F5A0095E43F = {
 			isa = PBXGroup;
 			children = (
+				95868C6729C799A8001F8629 /* Puddles */,
 				9579EBDB29C0F2F3009AB8C9 /* GPTSwift */,
 				9564D0D329B285D600F45768 /* Services */,
 				95C41F2029B26F5A0095E43F /* ExploreAI */,
@@ -297,6 +301,7 @@
 				9504B92D29B48A9900B0B516 /* Puddles */,
 				9579EBDC29C0F474009AB8C9 /* ChatGPT */,
 				9579EBDE29C0F474009AB8C9 /* GPT */,
+				95868C6529C78ACF001F8629 /* OpenAI */,
 			);
 			productName = ExploreAI;
 			productReference = 95C41F1E29B26F5A0095E43F /* ExploreAI.app */;
@@ -390,7 +395,7 @@
 			files = (
 				9564D0DD29B33A5900F45768 /* CompactRootNavigator.swift in Sources */,
 				95D21EA729B27CD700D53378 /* BasicPrompt.swift in Sources */,
-				9564D0CA29B280F700F45768 /* BasicPromptAnswerProvider.swift in Sources */,
+				9564D0CA29B280F700F45768 /* BasicPrompt_Managed.swift in Sources */,
 				95D21EAA29B27D8500D53378 /* RootNavigator.swift in Sources */,
 				9564D0F029B3435500F45768 /* Localized.swift in Sources */,
 				95C41F3F29B2708C0095E43F /* HomeView.swift in Sources */,
@@ -408,7 +413,7 @@
 				95C41F4629B2730D0095E43F /* BasicPromptView.swift in Sources */,
 				95C41F2229B26F5A0095E43F /* App.swift in Sources */,
 				9504B92029B36A8E00B0B516 /* AttributedString+HighlightCode.swift in Sources */,
-				9504B92629B382B700B0B516 /* CodeWriterAnswerProvider.swift in Sources */,
+				9504B92629B382B700B0B516 /* CodeWriter_Managed.swift in Sources */,
 				9564D0D929B3360100F45768 /* Sidebar.swift in Sources */,
 				95C41F4B29B276560095E43F /* Faker.swift in Sources */,
 				957D0F2929B4BB8E0099444D /* Puddles+Service.swift in Sources */,
@@ -704,6 +709,10 @@
 		9579EBDE29C0F474009AB8C9 /* GPT */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GPT;
+		};
+		95868C6529C78ACF001F8629 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OpenAI;
 		};
 		95C41F4F29B276710095E43F /* Fakery */ = {
 			isa = XCSwiftPackageProductDependency;

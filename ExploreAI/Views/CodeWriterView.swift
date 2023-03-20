@@ -51,7 +51,7 @@ struct CodeWriterView: View {
                 )
                 .onSubmit {
                     isFocusingPrompt = true
-                    interface.sendAction(.didTapSubmit)
+                    interface.fire(.didTapSubmit)
                 }
                 .focused($isFocusingPrompt)
                 .frame(maxWidth: .infinity)
@@ -61,7 +61,7 @@ struct CodeWriterView: View {
                 Color(uiColor: .secondarySystemBackground)
             }
             Button {
-                interface.sendAction(.didTapSubmit)
+                interface.fire(.didTapSubmit)
             } label: {
                 Text(Localized.CodeWriter.SubmitButton.title.string)
                     .padding(.vertical, 10)

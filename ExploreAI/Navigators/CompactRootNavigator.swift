@@ -42,9 +42,9 @@ struct CompactRootNavigator: Navigator {
     private func destination(for path: Path) -> some View {
         switch path {
         case .basicPrompt:
-            BasicPromptAnswerProvider()
+            BasicPrompt.managed()
         case .codeWriter:
-            CodeWriterAnswerProvider(interface: .consume(handleCodeWriterInterface))
+            CodeWriter.managed(interface: .consume(handleCodeWriterInterface))
         }
     }
 

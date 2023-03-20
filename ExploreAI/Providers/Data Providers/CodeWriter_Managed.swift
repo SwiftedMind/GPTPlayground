@@ -25,7 +25,7 @@ import Puddles
 import IdentifiedCollections
 import CodeWriterService
 
-struct CodeWriterAnswerProvider: Provider {
+private struct CodeWriter_Managed: Provider {
     @Service private var service: CodeWriterService = .live
     @State private var generatedCode: String = ""
     @State private var previousGeneratedCodes: [String] = []
@@ -36,16 +36,20 @@ struct CodeWriterAnswerProvider: Provider {
     var entryView: some View {
         CodeWriter(
             interface: .forward(to: interface),
-            providerInterface: .consume(handleProviderInterface),
+            dataInterface: .consume(handleProviderInterface),
             code: generatedCode,
             isLoading: isLoading
         )
     }
 
+    func applyStateConfiguration(_ configuration: StateConfiguration) {
+        
+    }
+
     // MARK: - Interface Handler
 
     @MainActor
-    private func handleProviderInterface(_ action: CodeWriter.ProviderAction) {
+    private func handleProviderInterface(_ action: CodeWriter.DataAction) {
         switch action {
         case .commit(let prompt):
             commit(prompt)
@@ -79,5 +83,17 @@ struct CodeWriterAnswerProvider: Provider {
 
     private func undo() {
         generatedCode = previousGeneratedCodes.popLast() ?? ""
+    }
+}
+
+extension CodeWriter_Managed {
+    enum StateConfiguration {
+        case reset
+    }
+}
+
+extension CodeWriter {
+    static func managed(interface: Interface<CodeWriter.Action>) -> some View {
+        CodeWriter_Managed(interface: interface)
     }
 }

@@ -33,10 +33,10 @@ struct HomeView: View {
         List {
             Section {
                 DisclosureButton(title: Localized.BasicPrompt.title.string) {
-                    interface.sendAction(.didTapBasicPrompt)
+                    interface.fire(.didTapBasicPrompt)
                 }
                 DisclosureButton(title: Localized.CodeWriter.title.string) {
-                    interface.sendAction(.didTapCodeWriter)
+                    interface.fire(.didTapCodeWriter)
                 }
             }
         }
