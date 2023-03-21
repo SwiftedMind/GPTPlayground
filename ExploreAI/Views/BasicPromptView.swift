@@ -36,7 +36,6 @@ struct BasicPromptView: View {
             promptSection
             answerSection
         }
-        .animation(.default, value: state.answers)
         .onAppear { isFocused = true }
         .safeAreaInset(edge: .bottom) {
             submitButton

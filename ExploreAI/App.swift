@@ -29,25 +29,9 @@ import Puddles
 
 @main
 struct ExploreAI: App {
-
     var body: some Scene {
         WindowGroup {
             RootNavigator()
-                .task {
-//                    let chatGPT = ChatGPT(apiKey: KeysReader.shared.openAIKey)
-//                    try! await print(chatGPT.ask("What is 4 by 4?"))
-                }
-                .task {
-//                    let gpt = GPT(apiKey: KeysReader.shared.openAIKey)
-//                    do {
-//                        let answer = try await gpt.complete(request: .davinci(prompt: "How are you?", configuration: { request in
-//                            request.bestOf = 5
-//                        }))
-//                        dump(answer)
-//                    } catch {
-//                        print(error)
-//                    }
-                }
         }
     }
 }
